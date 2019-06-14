@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sfs.mapper.VideosMapper" >
+  <resultMap id="BaseResultMap" type="com.sfs.pojo.Videos" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="video_path" property="videoPath" jdbcType="VARCHAR" />
+    <result column="like_num" property="likeNum" jdbcType="VARCHAR" />
+    <result column="dislike_num" property="dislikeNum" jdbcType="VARCHAR" />
+    <result column="comment_num" property="commentNum" jdbcType="VARCHAR" />
+    <result column="video_time" property="videoTime" jdbcType="VARCHAR" />
+    <result column="popularity" property="popularity" jdbcType="VARCHAR" />
+    <result column="cover_path" property="coverPath" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

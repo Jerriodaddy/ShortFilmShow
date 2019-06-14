@@ -1,0 +1,121 @@
+2019-06-15 01:57:53,575 [background-preinit] [org.hibernate.validator.internal.util.Version.<clinit>(Version.java:21)] - [INFO] HV000001: Hibernate Validator 6.0.16.Final
+2019-06-15 01:57:53,809 [main] [org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)] - [INFO] Starting Application on zhiruis-MacBook-Pro.local with PID 39853 (/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api/target/classes started by jerrio in /Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api)
+2019-06-15 01:57:53,810 [main] [org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:679)] - [INFO] The following profiles are active: dev
+2019-06-15 01:57:54,482 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 01:57:54,491 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 01:57:55,210 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:90)] - [INFO] Tomcat initialized with port(s): 8080 (http)
+2019-06-15 01:57:55,342 [main] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:296)] - [INFO] Root WebApplicationContext: initialization completed in 1485 ms
+2019-06-15 01:57:55,590 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)] - [INFO] Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-15 01:57:55,731 [main] [org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists(ThymeleafAutoConfiguration.java:108)] - [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-15 01:57:55,817 [main] [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)] - [INFO] Init DruidDataSource
+2019-06-15 01:57:56,340 [main] [com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:847)] - [INFO] {dataSource-1} inited
+2019-06-15 01:57:56,822 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:204)] - [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-15 01:57:56,825 [main] [org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)] - [INFO] Started Application in 3.409 seconds (JVM running for 3.916)
+2019-06-15 02:28:23,479 [Thread-3] [com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1608)] - [INFO] {dataSource-1} closed
+2019-06-15 02:28:23,480 [Thread-3] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)] - [INFO] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:31:07,916 [background-preinit] [org.hibernate.validator.internal.util.Version.<clinit>(Version.java:21)] - [INFO] HV000001: Hibernate Validator 6.0.16.Final
+2019-06-15 02:31:08,253 [main] [org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)] - [INFO] Starting Application on zhiruis-MacBook-Pro.local with PID 41159 (/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api/target/classes started by jerrio in /Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api)
+2019-06-15 02:31:08,254 [main] [org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:679)] - [INFO] The following profiles are active: dev
+2019-06-15 02:31:08,769 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:31:08,776 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:31:09,392 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:90)] - [INFO] Tomcat initialized with port(s): 8080 (http)
+2019-06-15 02:31:09,534 [main] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:296)] - [INFO] Root WebApplicationContext: initialization completed in 1243 ms
+2019-06-15 02:31:09,788 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)] - [INFO] Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:31:09,840 [main] [org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:557)] - [WARN] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'registLoginController' method 
+public java.lang.Object com.sfs.controller.RegistLoginController.test()
+to { /hello}: There is already 'helloController' bean method
+public java.lang.Object com.sfs.controller.HelloController.test() mapped.
+2019-06-15 02:31:09,840 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)] - [INFO] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:31:09,905 [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener.logMessage(ConditionEvaluationReportLoggingListener.java:142)] - [INFO] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-06-15 02:31:09,906 [main] [org.springframework.boot.SpringApplication.reportFailure(SpringApplication.java:858)] - [ERROR] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'registLoginController' method 
+public java.lang.Object com.sfs.controller.RegistLoginController.test()
+to { /hello}: There is already 'helloController' bean method
+public java.lang.Object com.sfs.controller.HelloController.test() mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1778)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.sfs.Application.main(Application.java:21)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'registLoginController' method 
+public java.lang.Object com.sfs.controller.RegistLoginController.test()
+to { /hello}: There is already 'helloController' bean method
+public java.lang.Object com.sfs.controller.HelloController.test() mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:618)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:586)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:312)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$1(AbstractHandlerMethodMapping.java:282)
+	at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:280)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:252)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:211)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:199)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:164)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1837)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1774)
+	... 16 more
+2019-06-15 02:31:48,873 [background-preinit] [org.hibernate.validator.internal.util.Version.<clinit>(Version.java:21)] - [INFO] HV000001: Hibernate Validator 6.0.16.Final
+2019-06-15 02:31:49,055 [main] [org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)] - [INFO] Starting Application on zhiruis-MacBook-Pro.local with PID 41184 (/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api/target/classes started by jerrio in /Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api)
+2019-06-15 02:31:49,056 [main] [org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:679)] - [INFO] The following profiles are active: dev
+2019-06-15 02:31:49,544 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:31:49,551 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:31:50,134 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:90)] - [INFO] Tomcat initialized with port(s): 8080 (http)
+2019-06-15 02:31:50,313 [main] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:296)] - [INFO] Root WebApplicationContext: initialization completed in 1220 ms
+2019-06-15 02:31:50,527 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)] - [INFO] Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:31:50,662 [main] [org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists(ThymeleafAutoConfiguration.java:108)] - [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-15 02:31:50,729 [main] [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)] - [INFO] Init DruidDataSource
+2019-06-15 02:31:51,226 [main] [com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:847)] - [INFO] {dataSource-1} inited
+2019-06-15 02:31:51,565 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:204)] - [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-15 02:31:51,567 [main] [org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)] - [INFO] Started Application in 2.795 seconds (JVM running for 3.13)
+2019-06-15 02:31:57,606 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:524)] - [INFO] Initializing Servlet 'dispatcherServlet'
+2019-06-15 02:31:57,616 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:546)] - [INFO] Completed initialization in 9 ms
+2019-06-15 02:46:12,366 [Thread-3] [com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1608)] - [INFO] {dataSource-1} closed
+2019-06-15 02:46:12,368 [Thread-3] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)] - [INFO] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:46:15,169 [background-preinit] [org.hibernate.validator.internal.util.Version.<clinit>(Version.java:21)] - [INFO] HV000001: Hibernate Validator 6.0.16.Final
+2019-06-15 02:46:15,565 [main] [org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)] - [INFO] Starting Application on zhiruis-MacBook-Pro.local with PID 41745 (/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api/target/classes started by jerrio in /Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api)
+2019-06-15 02:46:15,566 [main] [org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:679)] - [INFO] The following profiles are active: dev
+2019-06-15 02:46:16,156 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:46:16,163 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:46:16,785 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:90)] - [INFO] Tomcat initialized with port(s): 8080 (http)
+2019-06-15 02:46:16,935 [main] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:296)] - [INFO] Root WebApplicationContext: initialization completed in 1322 ms
+2019-06-15 02:46:17,189 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)] - [INFO] Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:46:17,350 [main] [org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists(ThymeleafAutoConfiguration.java:108)] - [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-15 02:46:17,423 [main] [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)] - [INFO] Init DruidDataSource
+2019-06-15 02:46:18,060 [main] [com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:847)] - [INFO] {dataSource-1} inited
+2019-06-15 02:46:18,501 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:204)] - [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-15 02:46:18,504 [main] [org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)] - [INFO] Started Application in 3.434 seconds (JVM running for 3.788)
+2019-06-15 02:46:19,636 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:524)] - [INFO] Initializing Servlet 'dispatcherServlet'
+2019-06-15 02:46:19,643 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:546)] - [INFO] Completed initialization in 6 ms
+2019-06-15 02:46:19,664 [http-nio-8080-exec-1] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException(AbstractHandlerExceptionResolver.java:197)] - [WARN] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-06-15 02:46:43,764 [Thread-3] [com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1608)] - [INFO] {dataSource-1} closed
+2019-06-15 02:46:43,764 [Thread-3] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)] - [INFO] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:46:47,914 [background-preinit] [org.hibernate.validator.internal.util.Version.<clinit>(Version.java:21)] - [INFO] HV000001: Hibernate Validator 6.0.16.Final
+2019-06-15 02:46:48,127 [main] [org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:50)] - [INFO] Starting Application on zhiruis-MacBook-Pro.local with PID 41765 (/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api/target/classes started by jerrio in /Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/short-film-show-api)
+2019-06-15 02:46:48,127 [main] [org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:679)] - [INFO] The following profiles are active: dev
+2019-06-15 02:46:48,756 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:46:48,763 [main] [org.mybatis.spring.mapper.ClassPathMapperScanner.doScan(ClassPathMapperScanner.java:166)] - [WARN] No MyBatis mapper was found in '[com.sfs]' package. Please check your configuration.
+2019-06-15 02:46:49,366 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:90)] - [INFO] Tomcat initialized with port(s): 8080 (http)
+2019-06-15 02:46:49,516 [main] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:296)] - [INFO] Root WebApplicationContext: initialization completed in 1355 ms
+2019-06-15 02:46:49,733 [main] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:171)] - [INFO] Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-15 02:46:49,892 [main] [org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists(ThymeleafAutoConfiguration.java:108)] - [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-06-15 02:46:49,979 [main] [com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource(DruidDataSourceAutoConfigure.java:56)] - [INFO] Init DruidDataSource
+2019-06-15 02:46:50,368 [main] [com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:847)] - [INFO] {dataSource-1} inited
+2019-06-15 02:46:50,694 [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:204)] - [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-15 02:46:50,697 [main] [org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:59)] - [INFO] Started Application in 2.897 seconds (JVM running for 3.21)
+2019-06-15 02:46:54,568 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:524)] - [INFO] Initializing Servlet 'dispatcherServlet'
+2019-06-15 02:46:54,574 [http-nio-8080-exec-1] [org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:546)] - [INFO] Completed initialization in 6 ms
+2019-06-15 02:46:54,625 [http-nio-8080-exec-1] [org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException(AbstractHandlerExceptionResolver.java:197)] - [WARN] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.sfs.utils.JSONResult com.sfs.controller.RegistLoginController.regist(com.sfs.pojo.Users)]
