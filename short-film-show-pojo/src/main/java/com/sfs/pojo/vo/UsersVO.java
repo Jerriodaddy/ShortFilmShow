@@ -1,17 +1,20 @@
-package com.sfs.pojo;
+package com.sfs.pojo.vo;
 
 import java.util.Date;
 import javax.persistence.*;
+
+import com.sfs.pojo.Users;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "User pojo", description = "This is the user object")
-public class Users {
+public class UsersVO {
 	@ApiModelProperty(hidden = true)
-    @Id
     private String id;
-
+	
+	@ApiModelProperty(hidden = true) 
+	private String userToken;
     /**
      * 昵称
      */
@@ -27,11 +30,9 @@ public class Users {
     private String nickname;
 
     @ApiModelProperty(hidden = true)
-    @Column(name = "create_date")
     private Date createDate;
 
     @ApiModelProperty(hidden = true)
-    @Column(name = "face_image")
     private String faceImage;
 
     /**
@@ -135,4 +136,12 @@ public class Users {
     public void setFaceImage(String faceImage) {
         this.faceImage = faceImage;
     }
+    
+    public String getUserToken() {
+    	return this.userToken;
+	}
+    
+    public void setUserToken(String userToken) {
+		this.userToken = userToken;
+	}
 }
