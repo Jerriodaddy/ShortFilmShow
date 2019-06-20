@@ -3,6 +3,7 @@ package com.sfs.pojo.vo;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sfs.pojo.Users;
 
 import io.swagger.annotations.ApiModel;
@@ -22,6 +23,7 @@ public class UsersVO {
     private String username;
     
     @ApiModelProperty(value = "password", example = "123456",required = true)
+    @JsonIgnore
     private String password;
     
     private String email;

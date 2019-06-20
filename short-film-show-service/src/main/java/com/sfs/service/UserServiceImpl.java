@@ -17,7 +17,7 @@ import tk.mybatis.mapper.entity.Example.Criteria;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UsersMapper usermapper;
+	private UsersMapper userMapper;
 	
 	@Autowired
 	private Sid sid;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		Users user = new Users();
 		user.setUsername(username);
 		
-		Users result = usermapper.selectOne(user);
+		Users result = userMapper.selectOne(user);
 		
 		return result == null ? false : true;
 	}
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 		
 		String userId = sid.nextShort();
 		user.setId(userId);
-		usermapper.insert(user);
+		userMapper.insert(user);
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -51,9 +51,27 @@ public class UserServiceImpl implements UserService {
 		criteria.andEqualTo("username", username);
 		criteria.andEqualTo("password", password);
 		
-		Users result = usermapper.selectOneByExample(userExample);
+		Users result = userMapper.selectOneByExample(userExample);
 		
 		return result;
+	}
+
+	@Override
+	public void updateUserInfo(Users user) {
+		Example userExample = new Example(Users.class);
+		Criteria criteria = userExample.createCriteria();
+		criteria.andEqualTo("id", user.getId());
+		userMapper.updateByExampleSelective(user, userExample);
+		
+	}
+
+	@Override
+	public Users queryUserInfo(String userId) {
+		Example userExample = new Example(Users.class);
+		Criteria criteria = userExample.createCriteria();
+		criteria.andEqualTo("id", userId);
+		Users user = userMapper.selectOneByExample(userExample);
+		return user;
 	}
 
 }

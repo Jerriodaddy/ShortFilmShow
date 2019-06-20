@@ -2,7 +2,6 @@ package com.sfs.controller;
 
 import java.util.UUID;
 
-import org.apache.catalina.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import com.sfs.utils.JSONResult;
 import com.sfs.utils.MD5Utils;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
 @RestController // = @Controller + @ResponseBody
@@ -78,7 +78,7 @@ public class RegistLoginController extends BasicController {
 		// 2.Does this user exist?
 		Users userResult = userService.queryUserForLogin(username, MD5Utils.getMD5Str(password));
 		
-		// 3.return
+		// 3.return 
 		if (userResult != null) {
 			userResult.setPassword("");// Security concern
 			UsersVO userVO = setUserRedisSessionToken(userResult);
@@ -86,5 +86,14 @@ public class RegistLoginController extends BasicController {
 		} else { 
 			return JSONResult.errorMsg("Username or password is wrong, please try again.");
 		}
+	}
+	
+	@ApiOperation(value = "Logout", notes = "API of user logout")
+	@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "query")
+	@PostMapping("/logout")
+	public JSONResult logout(String userId) throws Exception{ 
+		//维护用户关系是通过 redis session，删除即可
+		redis.del(USER_REDIS_SESSION + ":" + userId);
+		return JSONResult.ok();
 	}
 }

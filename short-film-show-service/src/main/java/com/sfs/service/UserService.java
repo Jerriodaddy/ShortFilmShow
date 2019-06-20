@@ -21,4 +21,8 @@ public interface UserService {
 	 * @return Whether this username & password exist.
 	 */
 	public Users queryUserForLogin(String username, String password);
+	
+	public void updateUserInfo(Users user);
+	
+	public Users queryUserInfo(String userId);
 }
