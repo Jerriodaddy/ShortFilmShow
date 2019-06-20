@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
+            document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"ShortMovie","entryPagePath":"pages/classify/classify.html","page":{"pages/classify/classify.html":{"window":{"enablePullDownRefresh":true,"backgroundTextStyle":"dark"}},"pages/hot/hot.html":{"window":{"enablePullDownRefresh":true}},"pages/login/login.html":{"window":{}},"pages/profile/profile.html":{"window":{}},"pages/videoplay1/videoplay1.html":{"window":{}},"pages/videoplay2/videoplay2.html":{"window":{}},"pages/videoplay3/videoplay3.html":{"window":{}},"pages/videoplay4/videoplay4.html":{"window":{}},"pages/videoplay5/videoplay5.html":{"window":{}},"pages/videoplay6/videoplay6.html":{"window":{}},"pages/register/register.html":{"window":{}},"pages/Swiper-detail/Swiper-detail.html":{"window":{}},"pages/videosearch/videosearch.html":{"window":{}},"pages/open/open.html":{"window":{}}},"global":{"window":{"navigationBarTextStyle":"white","navigationBarTitleText":"theShortFilmShow","navigationBarBackgroundColor":"black","backgroundColor":"#F8F8F8"}},"tabBar":{"color":"#7a7e83","selectedColor":"#0faeff","backgroundColor":"#000000","borderStyle":"black","list":[{"pagePath":"pages/classify/classify.html","text":"Home","iconPath":"static/icons/home.png","selectedIconPath":"static/icons/home.png"},{"pagePath":"pages/index/index.html","text":"Hot","iconPath":"static/icons/boxes.png","selectedIconPath":"static/icons/boxes.png"},{"pagePath":"pages/profile/profile.html","text":"Profile","iconPath":"static/icons/person.png","selectedIconPath":"static/icons/person.png"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/classify/classify","pages/hot/hot","pages/login/login","pages/profile/profile","pages/videoplay1/videoplay1","pages/videoplay2/videoplay2","pages/videoplay3/videoplay3","pages/videoplay4/videoplay4","pages/videoplay5/videoplay5","pages/videoplay6/videoplay6","pages/register/register","pages/Swiper-detail/Swiper-detail","pages/videosearch/videosearch","pages/open/open"],"subPackages":[],"usingComponents":{},"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false}}
+
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+            };
+
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>
