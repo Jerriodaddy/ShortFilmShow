@@ -1,0 +1,2 @@
+2019-06-18 17:22:36,876 [Thread-3] [org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:208)] - [INFO] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-18 17:22:36,901 [Thread-3] [com.alibaba.druid.pool.DruidDataSource.close(DruidDataSource.java:1608)] - [INFO] {dataSource-1} closed

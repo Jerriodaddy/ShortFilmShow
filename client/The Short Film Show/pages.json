@@ -1,0 +1,96 @@
+{
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            "path" : "pages/classify/classify",
+            "style" : {
+                "enablePullDownRefresh" : true,
+                "backgroundTextStyle" : "dark"
+            }
+        },
+        {
+            "path" : "pages/hot/hot",
+            "style" : {
+                "enablePullDownRefresh" : true
+            }
+        },
+		{
+			"path":"pages/login/login",
+			"style": {}
+		},
+        {
+            "path" : "pages/profile/profile"
+        },
+        {
+            "path" : "pages/videoplay1/videoplay1",
+            "style" : {}
+        },
+		{
+		    "path" : "pages/videoplay2/videoplay2",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/videoplay3/videoplay3",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/videoplay4/videoplay4",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/videoplay5/videoplay5",
+		    "style" : {}
+		},
+		{
+		    "path" : "pages/videoplay6/videoplay6",
+		    "style" : {}
+		},
+        {
+            "path" : "pages/register/register",
+            "style" : {}
+        },
+        {
+            "path" : "pages/Swiper-detail/Swiper-detail",
+            "style" : {}
+        },
+        {
+            "path" : "pages/videosearch/videosearch",
+            "style" : {}
+        },
+        {
+            "path" : "pages/open/open",
+            "style" : {}
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "white",
+        "navigationBarTitleText" : "theShortFilmShow",
+        "navigationBarBackgroundColor" : "black",
+        "backgroundColor" : "#F8F8F8"
+    },
+    "tabBar" : {
+        "color" : "#7a7e83",
+        "selectedColor" : "#0faeff",
+        "backgroundColor" : "#000000",
+        "list" : [
+            {
+                "pagePath" : "pages/classify/classify",
+                "text" : "Home",
+                "iconPath" : "static/icons/home.png",
+                "selectedIconPath" : "static/icons/home.png"
+            },
+            {
+                "pagePath" : "pages/index/index",
+                "text" : "Hot",
+                "iconPath" : "static/icons/boxes.png",
+                "selectedIconPath" : "static/icons/boxes.png"
+            },
+            {
+                "pagePath" : "pages/profile/profile",
+                "text" : "Profile",
+                "iconPath" : "static/icons/person.png",
+                "selectedIconPath" : "static/icons/person.png"
+            }
+        ]
+    }
+}
