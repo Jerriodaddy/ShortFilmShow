@@ -2,7 +2,8 @@
 	<view class="VP-back">
 		<view class="VP-screen">
 			<view class="screen">
-				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4" @error="videoErrorCallback" controls></video>
+				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4"
+				 @error="videoErrorCallback" controls></video>
 			</view>
 		</view>
 		<!-- 
@@ -47,17 +48,48 @@
 								<view class="video-pic-box">
 									<image class="video-pic-set" src="../../static/assets/Andrea Facheris.jpg" mode=""></image>
 								</view>
-									<view class="video-info-box">
-										<text class="filmname">Vendetta (ven·dét·ta)</text>
-										<view class="actors">
-											<text class="actor-name">Film Maker:</text>
-											<text class="actor-name">Andrea Facheris</text>
-										</view>
+								<view class="video-info-box">
+									<text class="filmname">Vendetta (ven·dét·ta)</text>
+									<view class="actors">
+										<text class="actor-name">Film Maker:</text>
+										<text class="actor-name">Andrea Facheris</text>
 									</view>
+								</view>
 							</view>
 
 							<text class="filmintro">
 							</text>
+						</block>
+					</scroll-view>
+				</swiper-item>
+
+				<swiper-item>
+					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+						<block>
+							<view class="new_comment hor_center">
+								<text class="latest_comment hor_center">Latest comment</text>
+							</view>
+							<!-- 分割线 -->
+							<view class="border_line"></view>
+
+							<view class="videocomment">
+								<view class="user_info">
+									<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+									<view class="user_info_name">
+										<text class="user_info_name_text">Guetta</text>
+									</view>
+								</view>
+								<view class="comment_box">
+									<view class="time">
+									<text class="time_text">time</text>
+									</view>
+									<view class="content_box">
+										<text class="content_text">
+The magical war has gradually entered a climax. The Hobbit Frodo (Elijah Wood) carries the Lord of the Rings, goes to the Doomsday Mountain with the partner Sam (Sean Astin) and the dark shackles, and the obstacles are constantly on the way. The ring was destroyed and exhausted to prevent it. On the other hand, the white robe wizard Gandalf (Ian McLeanen) led the Warriors to defend the capital of the city, Minas Tirilis. The World of Warcraft is in a state of pressure, and the battle between darkness and light is coming...
+The film is the final part of the "Lord of the Rings", based on the legendary masterpiece of the British author JRR Tolkien, The Lord of the Rings, and won the 76th Oscar in 2004. 11 awards including Best Film, Best Director, Best Adapted Screenplay, Best Editing, Best Art Direction, Best Costume Design, Best Makeup, Best Visual Effects, Best Sound, Best Soundtrack and Best Songs </text>
+									</view>
+								</view>
+							</view>
 						</block>
 					</scroll-view>
 				</swiper-item>
@@ -81,7 +113,7 @@
 				menuTabs: [{
 					name: 'Detail'
 				}, {
-					name: 'Commit'
+					name: 'Comment'
 				}],
 
 				actorinfo: [{
@@ -114,19 +146,22 @@
 			this.duration = e.target.value
 		},
 
-		// 				onLoad: function() {
-		// 					//初始化数据
-		// 					for (var i = 0; i < this.swiperDateList.length; i++) {
-		// 						this.getDateList(i);
-		// 					}
-		// 				},
-		// 		
 		onLoad: function() {
+			//初始化数据
+			for (var i = 0; i < this.swiperDateList.length; i++) {
+				this.getDateList(i);
+			};
 			uni.setNavigationBarTitle({
 				title: 'TheShortFilmShow'
 			});
-
 		},
+
+		// 		onLoad: function() {
+		// 			uni.setNavigationBarTitle({
+		// 				title: 'TheShortFilmShow'
+		// 			});
+		//}, 
+
 		methods: {
 			swichMenu: async function(current) { //点击其中一个 menu
 				if (this.currentTab == current) {
@@ -136,6 +171,9 @@
 					this.setScrollLeft(current);
 				}
 			},
+
+			// preindex = 默认的index,
+			// current index
 			swiperChange: async function(e) {
 				let index = e.target.current;
 				this.setScrollLeft(index);
@@ -179,13 +217,32 @@
 <style>
 	page {
 		width: 100%;
-		height: 100%;
+		height: 200%;
 		/* display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center; */
 	}
 
+	/* 通用属性 */
+	.super_center {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+
+	.hor_center {
+		display: flex;
+		align-items: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* 页面属性 */
 	.VP-back {
 		height: 100%;
 	}
@@ -204,8 +261,9 @@
 		display: flex;
 		width: 100%;
 		height: 350upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-box {
@@ -215,22 +273,24 @@
 		width: 221.31upx;
 		margin: 20upx 20upx 20upx;
 		margin-bottom: 20upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-set {
 		height: 297upx;
 		width: 100%;
 	}
-	
+
 	.video-info-box {
 		display: flex;
 		flex-direction: column;
 		margin-left: 50upx;
 		height: 100%;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.actors {
@@ -352,7 +412,8 @@
 		flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: #FFFFFF;
+		background-color: red;
+		/*调试背景色*/
 		border: 5upx solid #000000;
 	}
 
@@ -420,5 +481,99 @@
 	.filmpic {
 		width: 245.9upx;
 		height: 330upx;
+	}
+
+	/* 评论属性 */
+
+	.new_comment {
+		width: 100%;
+		height: 80upx;
+		background-color: #007AFF;
+	}
+
+	.latest_comment {
+		font-size: large;
+		color: white;
+		margin-left: 40upx;
+	}
+
+	.videocomment {
+		width: 100%;
+		height: auto;
+		min-height: 80upx;
+		background-color: yellow;
+		display: flex;
+		position: fixed;
+	}
+
+	.user_info {
+		height: auto;
+		width: auto;
+		min-width: 40upx;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		margin: 20upx 20upx;
+	}
+
+	.user_info_name {
+		width: auto;
+		min-width: 40upx;
+		max-width: 80upx;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.content_box {
+		margin-left: 20upx;
+		margin-right: 20upx;
+		margin-top: 40upx;
+		margin-bottom: 20upx;
+		position: fixed;
+		height: auto;
+	}
+
+	.user_info_name_text {
+		font-size: small;
+		color: #000000;
+	}
+
+	.comment_profile_pic {
+		height: 80upx;
+		width: 80upx;
+		border: 2upx solid #000000;
+		border-radius: 150upx;
+	}
+
+	.comment_text {
+		font-size: medium;
+		color: #1AAD19;
+	}
+	.comment_box{
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.time{
+		display: flex;
+		height: 10upx;
+		margin-left: 20upx;
+		margin-top: 10upx;
+	}
+	
+	.time_text{
+		font-size: small;
+		color: gray;
+	}
+	/* 分割线 */
+	.border_line {
+		width: 40%;
+		margin-left: 40upx;
+		height: 5upx;
+		border-bottom: 5upx solid #8A6DE9;
 	}
 </style>
