@@ -2,7 +2,8 @@
 	<view class="VP-back">
 		<view class="VP-screen">
 			<view class="screen">
-				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4" @error="videoErrorCallback" controls></video>
+				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4"
+				 @error="videoErrorCallback" controls></video>
 			</view>
 		</view>
 		<!-- 
@@ -47,17 +48,36 @@
 								<view class="video-pic-box">
 									<image class="video-pic-set" src="../../static/assets/Andrea Facheris.jpg" mode=""></image>
 								</view>
-									<view class="video-info-box">
-										<text class="filmname">Vendetta (ven·dét·ta)</text>
-										<view class="actors">
-											<text class="actor-name">Film Maker:</text>
-											<text class="actor-name">Andrea Facheris</text>
-										</view>
+								<view class="video-info-box">
+									<text class="filmname">Vendetta (ven·dét·ta)</text>
+									<view class="actors">
+										<text class="actor-name">Film Maker:</text>
+										<text class="actor-name">Andrea Facheris</text>
 									</view>
+								</view>
 							</view>
 
 							<text class="filmintro">
 							</text>
+						</block>
+					</scroll-view>
+				</swiper-item>
+
+				<swiper-item>
+					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+						<block>
+							<view class="videocomment">
+								<view class="user_info">
+									<image class="comment_profile_pic" src="../../static/icons/logo.png">
+									</image>
+									<view class="user_info_name">
+										<text class="user_info_name_text">Guetta</text>
+									</view>
+								</view>
+									<view class="content_box">
+										<text class="content_text">This is comment</text>
+									</view>
+							</view>
 						</block>
 					</scroll-view>
 				</swiper-item>
@@ -81,7 +101,7 @@
 				menuTabs: [{
 					name: 'Detail'
 				}, {
-					name: 'Commit'
+					name: 'Comment'
 				}],
 
 				actorinfo: [{
@@ -114,19 +134,22 @@
 			this.duration = e.target.value
 		},
 
-		// 				onLoad: function() {
-		// 					//初始化数据
-		// 					for (var i = 0; i < this.swiperDateList.length; i++) {
-		// 						this.getDateList(i);
-		// 					}
-		// 				},
-		// 		
 		onLoad: function() {
+			//初始化数据
+			for (var i = 0; i < this.swiperDateList.length; i++) {
+				this.getDateList(i);
+			};
 			uni.setNavigationBarTitle({
 				title: 'TheShortFilmShow'
 			});
-
 		},
+
+		// 		onLoad: function() {
+		// 			uni.setNavigationBarTitle({
+		// 				title: 'TheShortFilmShow'
+		// 			});
+		//}, 
+
 		methods: {
 			swichMenu: async function(current) { //点击其中一个 menu
 				if (this.currentTab == current) {
@@ -136,6 +159,9 @@
 					this.setScrollLeft(current);
 				}
 			},
+
+			// preindex = 默认的index,
+			// current index
 			swiperChange: async function(e) {
 				let index = e.target.current;
 				this.setScrollLeft(index);
@@ -177,6 +203,7 @@
 </script>
 
 <style>
+
 	page {
 		width: 100%;
 		height: 100%;
@@ -189,7 +216,7 @@
 	.VP-back {
 		height: 100%;
 	}
-
+	
 	.play-video {
 		width: 100%;
 	}
@@ -204,8 +231,9 @@
 		display: flex;
 		width: 100%;
 		height: 350upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-box {
@@ -215,22 +243,24 @@
 		width: 221.31upx;
 		margin: 20upx 20upx 20upx;
 		margin-bottom: 20upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-set {
 		height: 297upx;
 		width: 100%;
 	}
-	
+
 	.video-info-box {
 		display: flex;
 		flex-direction: column;
 		margin-left: 50upx;
 		height: 100%;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.actors {
@@ -352,7 +382,7 @@
 		flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: #FFFFFF;
+		background-color: red; /*调试背景色*/
 		border: 5upx solid #000000;
 	}
 
@@ -420,5 +450,62 @@
 	.filmpic {
 		width: 245.9upx;
 		height: 330upx;
+	}
+
+	/* 评论属性 */
+	.videocomment {
+		width: 100%;
+		height: auto;
+		min-height: 80upx;
+		background-color: yellow;
+		display: flex;
+		position: fixed;
+	}
+	
+	.user_info{
+		height: auto;
+		width: auto;
+		min-width: 40upx;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		margin: 20upx 20upx;
+	}
+	
+	.user_info_name{
+		width: auto;
+		min-width: 40upx;
+		max-width: 80upx;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.content_box{
+		margin-left: 180upx;
+		margin-right: 20upx;
+		margin-top: 20upx;
+		margin-bottom: 20upx;
+		position: fixed;
+	}
+	
+	.user_info_name_text{
+		font-size: small;
+		color: #000000;
+	}
+	
+	.comment_profile_pic {
+		height: 80upx;
+		width: 80upx;
+		border: 2upx solid #000000;
+		border-radius: 150upx;
+	}
+
+	.comment_text {
+		font-size: medium;
+		color: #1AAD19;
 	}
 </style>
