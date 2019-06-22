@@ -22,6 +22,7 @@ import com.sfs.pojo.vo.UsersVO;
 import com.sfs.service.UserService;
 import com.sfs.service.VideoService;
 import com.sfs.utils.JSONResult;
+import com.sfs.utils.PagedResult;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -56,7 +57,7 @@ public class VideoController extends BasicController {
 			return JSONResult.errorMsg("User id can not be null.");
 		}
 		// 文件保存空间地址
-		String fileSpace = "/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp";
+		String fileSpace = FILE_SPACE;
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "/" + userId + "/video";
 
@@ -69,7 +70,7 @@ public class VideoController extends BasicController {
 		try {
 			if (file != null) {
 				if (StringUtils.isNotBlank(fileName)) {
-					String finalVideoPath = fileSpace + uploadPathDB + "/" + fileName;
+					finalVideoPath = fileSpace + uploadPathDB + "/" + fileName;
 					// 数据库保存的路径
 					uploadPathDB += ("/" + fileName);
 
@@ -116,11 +117,10 @@ public class VideoController extends BasicController {
 	@ApiOperation(value = "Uploads video cover")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "form"),
-		@ApiImplicitParam(name = "video", required = true, dataType = "String", paramType = "form"),
+		@ApiImplicitParam(name = "videoId", required = true, dataType = "String", paramType = "form"),
 	})
-	
 	@PostMapping(value="/uploadCover", headers="content-type=multipart/form-data")
-	public JSONResult uploadVideo(String userId,
+	public JSONResult uploadCover(String userId,
 			String videoId, 
 			@ApiParam(value = "Video Cover", required = true)
 			MultipartFile file) throws Exception {
@@ -128,7 +128,7 @@ public class VideoController extends BasicController {
 			return JSONResult.errorMsg("Video id & user id can not be null.");
 		}
 		// 文件保存空间地址
-		String fileSpace = "/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp";
+		String fileSpace = FILE_SPACE;
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "/" + userId + "/video";
 
@@ -168,22 +168,23 @@ public class VideoController extends BasicController {
 			}
 		}
 		
-		// 保存视频信息到数据库
-		Videos video = new Videos();
-		video.setUserId(userId); 
-		video.setVideoSeconds((float)videoSeconds);
-		video.setVideoHeight(videoHeight);
-		video.setVideoWidth(videoWidth);
-		video.setVideoDesc(desc);
-		video.setVideoPath(uploadPathDB);
-		video.setStatus(VideoStatusEnum.SUCCESS.value);
-		video.setCreateTime(new Date());
-		video.setCategory("Default");
-
-		String videoId = videoService.saveVideo(video);
+		videoService.updateVideoCover(videoId, uploadPathDB);
 		
-		return JSONResult.ok(videoId); // 返回头像地址
+		return JSONResult.ok(); // 返回头像地址
 	}
 	
+	@ApiOperation(value = "Query all video by paging", notes = "default size is 5.")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "page", required = true, dataType = "Integer", paramType = "form"),
+	})
+	@PostMapping(value="/showAll")
+	public JSONResult showAll(Integer page) throws Exception{
+		if (page == null) {
+			page = 1;
+		}
+		
+		PagedResult result = videoService.getAllVideos(page, PAGE_SIZE);
+		return JSONResult.ok(result);
+	}
 	
 }
