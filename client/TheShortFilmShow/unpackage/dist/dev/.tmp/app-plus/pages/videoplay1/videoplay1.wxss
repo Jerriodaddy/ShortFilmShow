@@ -82,7 +82,8 @@ page {
 .com-write {
 		height: 10%;
 		border: 1rpx solid black;
-		border-radius: 2px;
+		-webkit-border-radius: 2px;
+		        border-radius: 2px;
 		background-color: #F8F8FF;
 }
 .V-com-area {

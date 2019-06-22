@@ -34,7 +34,8 @@ page {
 .profilepic {
 	width: 120rpx;
 	height: 120rpx;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 }
 
 /* 更改头像 */
@@ -131,7 +132,7 @@ page {
 	color: #929292;
 	font-size: large;
 }
-.film-upload{
+.film-upload {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -147,7 +148,7 @@ page {
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.film-upload-text{
+.film-upload-text {
 	color: white;
 	font-size: middle;
 }

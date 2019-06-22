@@ -3,34 +3,24 @@ package com.sfs.pojo;
 import java.util.Date;
 import javax.persistence.*;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-@ApiModel(value = "User pojo", description = "This is the user object")
 public class Users {
-	@ApiModelProperty(hidden = true)
     @Id
     private String id;
 
     /**
      * 昵称
      */
-    @ApiModelProperty(value = "username", example = "username",required = true)
     private String username;
-    
-    @ApiModelProperty(value = "password", example = "123456",required = true)
+
     private String password;
-    
+
     private String email;
 
-    @ApiModelProperty(hidden = true)
     private String nickname;
 
-    @ApiModelProperty(hidden = true)
     @Column(name = "create_date")
     private Date createDate;
 
-    @ApiModelProperty(hidden = true)
     @Column(name = "face_image")
     private String faceImage;
 

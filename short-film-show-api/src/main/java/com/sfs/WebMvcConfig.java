@@ -11,7 +11,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
 				.addResourceLocations("classpath:/META-INF/resources/")
-				.addResourceLocations("file:/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/");
+				.addResourceLocations("file:/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp/");
 	}
 	
 }

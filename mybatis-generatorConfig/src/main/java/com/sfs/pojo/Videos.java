@@ -1,10 +1,11 @@
 package com.sfs.pojo;
 
+import java.util.Date;
 import javax.persistence.*;
 
 public class Videos {
     @Id
-    private Integer id;
+    private String id;
 
     /**
      * 作者id
@@ -13,50 +14,9 @@ public class Videos {
     private String userId;
 
     /**
-     * 发布时间
-     */
-    @Column(name = "create_time")
-    private String createTime;
-
-    /**
      * 栏目
      */
     private String category;
-
-    /**
-     * 视频路径
-     */
-    @Column(name = "video_path")
-    private String videoPath;
-
-    /**
-     * 赞数
-     */
-    @Column(name = "like_num")
-    private String likeNum;
-
-    /**
-     * 踩数
-     */
-    @Column(name = "dislike_num")
-    private String dislikeNum;
-
-    /**
-     * 评论数
-     */
-    @Column(name = "comment_num")
-    private String commentNum;
-
-    /**
-     * 视频时长
-     */
-    @Column(name = "video_time")
-    private String videoTime;
-
-    /**
-     * 人气
-     */
-    private String popularity;
 
     /**
      * 封面路径
@@ -65,21 +25,68 @@ public class Videos {
     private String coverPath;
 
     /**
+     * 视频路径
+     */
+    @Column(name = "video_path")
+    private String videoPath;
+
+    /**
+     * 视频时长
+     */
+    @Column(name = "video_seconds")
+    private Float videoSeconds;
+
+    @Column(name = "video_height")
+    private Integer videoHeight;
+
+    @Column(name = "video_width")
+    private Integer videoWidth;
+
+    /**
+     * 视频描述
+     */
+    @Column(name = "video_desc")
+    private String videoDesc;
+
+    /**
+     * 赞数
+     */
+    @Column(name = "like_num")
+    private Long likeNum;
+
+    /**
+     * 评论数
+     */
+    @Column(name = "comment_num")
+    private Long commentNum;
+
+    /**
+     * 人气
+     */
+    private Long popularity;
+
+    /**
      * 视频状态：1、发布成功，2、禁播（管理员操作）
      */
-    private String status;
+    private Integer status;
+
+    /**
+     * 发布时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * @return id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -102,24 +109,6 @@ public class Videos {
     }
 
     /**
-     * 获取发布时间
-     *
-     * @return create_time - 发布时间
-     */
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    /**
-     * 设置发布时间
-     *
-     * @param createTime 发布时间
-     */
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * 获取栏目
      *
      * @return category - 栏目
@@ -135,114 +124,6 @@ public class Videos {
      */
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    /**
-     * 获取视频路径
-     *
-     * @return video_path - 视频路径
-     */
-    public String getVideoPath() {
-        return videoPath;
-    }
-
-    /**
-     * 设置视频路径
-     *
-     * @param videoPath 视频路径
-     */
-    public void setVideoPath(String videoPath) {
-        this.videoPath = videoPath;
-    }
-
-    /**
-     * 获取赞数
-     *
-     * @return like_num - 赞数
-     */
-    public String getLikeNum() {
-        return likeNum;
-    }
-
-    /**
-     * 设置赞数
-     *
-     * @param likeNum 赞数
-     */
-    public void setLikeNum(String likeNum) {
-        this.likeNum = likeNum;
-    }
-
-    /**
-     * 获取踩数
-     *
-     * @return dislike_num - 踩数
-     */
-    public String getDislikeNum() {
-        return dislikeNum;
-    }
-
-    /**
-     * 设置踩数
-     *
-     * @param dislikeNum 踩数
-     */
-    public void setDislikeNum(String dislikeNum) {
-        this.dislikeNum = dislikeNum;
-    }
-
-    /**
-     * 获取评论数
-     *
-     * @return comment_num - 评论数
-     */
-    public String getCommentNum() {
-        return commentNum;
-    }
-
-    /**
-     * 设置评论数
-     *
-     * @param commentNum 评论数
-     */
-    public void setCommentNum(String commentNum) {
-        this.commentNum = commentNum;
-    }
-
-    /**
-     * 获取视频时长
-     *
-     * @return video_time - 视频时长
-     */
-    public String getVideoTime() {
-        return videoTime;
-    }
-
-    /**
-     * 设置视频时长
-     *
-     * @param videoTime 视频时长
-     */
-    public void setVideoTime(String videoTime) {
-        this.videoTime = videoTime;
-    }
-
-    /**
-     * 获取人气
-     *
-     * @return popularity - 人气
-     */
-    public String getPopularity() {
-        return popularity;
-    }
-
-    /**
-     * 设置人气
-     *
-     * @param popularity 人气
-     */
-    public void setPopularity(String popularity) {
-        this.popularity = popularity;
     }
 
     /**
@@ -264,11 +145,147 @@ public class Videos {
     }
 
     /**
+     * 获取视频路径
+     *
+     * @return video_path - 视频路径
+     */
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    /**
+     * 设置视频路径
+     *
+     * @param videoPath 视频路径
+     */
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
+    /**
+     * 获取视频时长
+     *
+     * @return video_seconds - 视频时长
+     */
+    public Float getVideoSeconds() {
+        return videoSeconds;
+    }
+
+    /**
+     * 设置视频时长
+     *
+     * @param videoSeconds 视频时长
+     */
+    public void setVideoSeconds(Float videoSeconds) {
+        this.videoSeconds = videoSeconds;
+    }
+
+    /**
+     * @return video_height
+     */
+    public Integer getVideoHeight() {
+        return videoHeight;
+    }
+
+    /**
+     * @param videoHeight
+     */
+    public void setVideoHeight(Integer videoHeight) {
+        this.videoHeight = videoHeight;
+    }
+
+    /**
+     * @return video_width
+     */
+    public Integer getVideoWidth() {
+        return videoWidth;
+    }
+
+    /**
+     * @param videoWidth
+     */
+    public void setVideoWidth(Integer videoWidth) {
+        this.videoWidth = videoWidth;
+    }
+
+    /**
+     * 获取视频描述
+     *
+     * @return video_desc - 视频描述
+     */
+    public String getVideoDesc() {
+        return videoDesc;
+    }
+
+    /**
+     * 设置视频描述
+     *
+     * @param videoDesc 视频描述
+     */
+    public void setVideoDesc(String videoDesc) {
+        this.videoDesc = videoDesc;
+    }
+
+    /**
+     * 获取赞数
+     *
+     * @return like_num - 赞数
+     */
+    public Long getLikeNum() {
+        return likeNum;
+    }
+
+    /**
+     * 设置赞数
+     *
+     * @param likeNum 赞数
+     */
+    public void setLikeNum(Long likeNum) {
+        this.likeNum = likeNum;
+    }
+
+    /**
+     * 获取评论数
+     *
+     * @return comment_num - 评论数
+     */
+    public Long getCommentNum() {
+        return commentNum;
+    }
+
+    /**
+     * 设置评论数
+     *
+     * @param commentNum 评论数
+     */
+    public void setCommentNum(Long commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    /**
+     * 获取人气
+     *
+     * @return popularity - 人气
+     */
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    /**
+     * 设置人气
+     *
+     * @param popularity 人气
+     */
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
+
+    /**
      * 获取视频状态：1、发布成功，2、禁播（管理员操作）
      *
      * @return status - 视频状态：1、发布成功，2、禁播（管理员操作）
      */
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
@@ -277,7 +294,25 @@ public class Videos {
      *
      * @param status 视频状态：1、发布成功，2、禁播（管理员操作）
      */
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    /**
+     * 获取发布时间
+     *
+     * @return create_time - 发布时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置发布时间
+     *
+     * @param createTime 发布时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

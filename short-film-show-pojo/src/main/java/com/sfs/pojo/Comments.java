@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 public class Comments {
     @Id
-    private Integer id;
+    private String id;
 
     /**
      * 所属文章id
@@ -32,14 +32,14 @@ public class Comments {
     /**
      * @return id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

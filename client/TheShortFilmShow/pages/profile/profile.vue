@@ -2,9 +2,12 @@
 	<view class="background">
 		<view class="picbox">
 			<navigator url="../login/login">
-				<image src="../../static/icons/logo.png" class="profilepic"></image>
+				<!-- <image src="../../static/icons/logo.png" class="profilepic"></image> -->
+				<image :src="faceUrl" class="profilepic"></image>
+
 			</navigator>
-			<text class="change">change picture</text>
+			<!-- <text class="change">change picture</text> -->
+			<button type="primary" @click="changeFaceImage">change picture</button>
 		</view>
 
 		<view class="information-card">
@@ -29,7 +32,7 @@
 		</view>
 		<view class="film-upload">
 			<navigator url="../videosearch/videosearch">
-			<text class="film-upload-text">Film upload</text>
+				<text class="film-upload-text">Film upload</text>
 			</navigator>
 		</view>
 	</view>
@@ -39,15 +42,60 @@
 	export default {
 		data() {
 			return {
-
+				faceUrl: '../../static/icons/logo.png',
 			}
 		},
 
-		onLoad: function() {
+		onLoad() {
 			uni.setNavigationBarTitle({
 				title: "Profile"
 			});
 
+		},
+
+		methods: {
+			changeFaceImage: function() {
+				var that = this;
+				uni.chooseImage({
+					count: 1, //默认9
+					sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album'], //从相册选择
+					success: function(res) {
+						var tempFilePaths = res.tempFilePaths;
+						console.log(tempFilePaths);
+
+						uni.showLoading({
+							title: 'Uploading...'
+						})
+						uni.uploadFile({
+							url: that.$serverUrl + '/user/uploadFace?userId=' + 'tmp-user-id',
+							filePath: tempFilePaths[0],
+							name: 'file',
+							success: (res) => {
+								var data = JSON.parse(res.data);
+								console.log(data.data);
+								uni.hideLoading();
+
+								if (data.status == 200) {
+									uni.showToast({
+										title: 'Success!',
+										icon: "success"
+									})
+
+									var imageUrl = data.data;
+									that.faceUrl = that.$serverUrl + imageUrl;
+								} else if (data.status == 500) {
+									uni.showToast({
+										title: data.msg
+									})
+								}
+							}
+						});
+					}
+				});
+
+
+			}
 		}
 	}
 </script>
@@ -151,16 +199,16 @@
 		color: #929292;
 		font-size: large;
 	}
-	
-	.film-upload{
+
+	.film-upload {
 		display: flex;
 		width: 100%;
 		height: 60upx;
 		justify-content: center;
 		align-items: center;
 	}
-	
-	.film-upload-text{
+
+	.film-upload-text {
 		color: white;
 		font-size: middle;
 	}
