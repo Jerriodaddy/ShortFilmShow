@@ -34,7 +34,8 @@ page {
 .profilepic {
 	width: 120rpx;
 	height: 120rpx;
-	border-radius: 60rpx;
+	-webkit-border-radius: 60rpx;
+	        border-radius: 60rpx;
 }
 
 /* 更改头像 */

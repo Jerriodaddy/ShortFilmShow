@@ -25,67 +25,80 @@
 				<input name="comment" class="input" placeholder="Write some comment?" />
 			</view>
 		</view> -->
-
-		<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
-			<block v-for="(menuTabs,index) in menuTabs" :key="index">
-				<view class="menu-one-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
-					<view :class="[currentTab==index ? 'menu-one-act' : 'menu-one']">
-						<view class="menu-one-txt">{{menuTabs.name}}</view>
-						<view class="menu-one-bottom">
-							<view class="menu-one-bottom-color"></view>
+		<view class="control_interface">
+			<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
+				<block v-for="(menuTabs,index) in menuTabs" :key="index">
+					<view class="menu-one-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
+						<view :class="[currentTab==index ? 'menu-one-act' : 'menu-one']">
+							<view class="menu-one-txt">{{menuTabs.name}}</view>
+							<view class="menu-one-bottom">
+								<view class="menu-one-bottom-color"></view>
+							</view>
 						</view>
 					</view>
+				</block>
+			</scroll-view>
+
+			<swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
+				<block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
+					<swiper-item>
+						<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+							<block>
+								<view class="video-info-card">
+									<view class="video-pic-box">
+										<image class="video-pic-set" src="../../static/assets/images2.jpg" mode=""></image>
+									</view>
+									<view class="video-info-box">
+										<text class="filmname">Vendetta (ven·dét·ta)</text>
+										<view class="actors">
+											<text class="actor-name">Film Maker:</text>
+											<text class="actor-name">Andrea Facheris</text>
+										</view>
+									</view>
+								</view>
+
+								<text class="filmintro">
+								</text>
+							</block>
+						</scroll-view>
+					</swiper-item>
+
+					<swiper-item>
+						<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+							<block>
+								<view class="new_comment hor_center">
+									<text class="latest_comment hor_center">Latest comment</text>
+								</view>
+								<!-- 分割线 -->
+								<view class="border_line"></view>
+
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">time</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												The magical war has gradually entered a climax. </text>
+											<view class="text_i"></view>
+										</view>
+									</view>
+								</view>
+							</block>
+						</scroll-view>
+					</swiper-item>
+				</block>
+			</swiper>
+			<view class="V-com-area">
+				<view class="com-write">
+					<input name="comment" class="input" placeholder="Write some comment?" />
 				</view>
-			</block>
-		</scroll-view>
-
-		<swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
-			<block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
-				<swiper-item>
-					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
-						<block>
-							<view class="video-info-card">
-								<view class="video-pic-box">
-									<image class="video-pic-set" src="../../static/assets/Andrea Facheris.jpg" mode=""></image>
-								</view>
-								<view class="video-info-box">
-									<text class="filmname">Vendetta (ven·dét·ta)</text>
-									<view class="actors">
-										<text class="actor-name">Film Maker:</text>
-										<text class="actor-name">Andrea Facheris</text>
-									</view>
-								</view>
-							</view>
-
-							<text class="filmintro">
-							</text>
-						</block>
-					</scroll-view>
-				</swiper-item>
-
-				<swiper-item>
-					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
-						<block>
-							<view class="videocomment">
-								<view class="user_info">
-									<image class="comment_profile_pic" src="../../static/icons/logo.png">
-									</image>
-									<view class="user_info_name">
-										<text class="user_info_name_text">Guetta</text>
-									</view>
-								</view>
-									<view class="content_box">
-										<text class="content_text">This is comment</text>
-									</view>
-							</view>
-						</block>
-					</scroll-view>
-				</swiper-item>
-			</block>
-		</swiper>
-		<view class="V-com-area">
-			<view class="com-write">
-				<input name="comment" class="input" placeholder="Write some comment?" />
 			</view>
 		</view>
 	</view>
@@ -203,20 +216,39 @@
 </script>
 
 <style>
-
 	page {
 		width: 100%;
-		height: 100%;
+		height: 200%;
 		/* display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center; */
 	}
 
+	/* 通用属性 */
+	.super_center {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+
+	.hor_center {
+		display: flex;
+		align-items: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* 页面属性 */
+
 	.VP-back {
 		height: 100%;
 	}
-	
+
 	.play-video {
 		width: 100%;
 	}
@@ -224,7 +256,7 @@
 	.V-intro {
 		height: 50%;
 	}
-
+	
 	/* 影片图片、名字、评分显示 */
 
 	.video-info-card {
@@ -382,8 +414,10 @@
 		flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: red; /*调试背景色*/
+		background-color: #f3c1c6;
+		/*调试背景色*/
 		border: 5upx solid #000000;
+		position: absolute;
 	}
 
 	.swiper-one-list {
@@ -453,16 +487,30 @@
 	}
 
 	/* 评论属性 */
+
+	.new_comment {
+		width: 100%;
+		height: 80upx;
+		background-color: #007AFF;
+	}
+
+	.latest_comment {
+		font-size: large;
+		color: white;
+		margin-left: 40upx;
+	}
+
 	.videocomment {
 		width: 100%;
 		height: auto;
-		min-height: 80upx;
 		background-color: yellow;
 		display: flex;
-		position: fixed;
+		position: relative;
+		/* 识别框 */
+		border: 2upx solid #000000;
 	}
-	
-	.user_info{
+
+	.user_info {
 		height: auto;
 		width: auto;
 		min-width: 40upx;
@@ -472,9 +520,12 @@
 		justify-content: center;
 		align-items: center;
 		margin: 20upx 20upx;
+		position: absolute;
+				/* 识别框 */
+		border: 2upx solid #000000;
 	}
-	
-	.user_info_name{
+
+	.user_info_name {
 		width: auto;
 		min-width: 40upx;
 		max-width: 80upx;
@@ -483,20 +534,36 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
-	.content_box{
-		margin-left: 180upx;
-		margin-right: 20upx;
-		margin-top: 20upx;
+
+	.content_box {
+		margin-left: 20upx;
+		margin-right: 40upx;
+		margin-top: 50upx;
 		margin-bottom: 20upx;
-		position: fixed;
+		position: absolute;
+		height: auto;
+		width: 95%;
+				/* 识别框 */
+		border: 2upx solid #000000;
 	}
-	
-	.user_info_name_text{
+
+	.text_i {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.content_text {
+		display: inline-block;
+		width: 100%;
+		text-align: justify;
+		font-size: medium;
+	}
+
+	.user_info_name_text {
 		font-size: small;
 		color: #000000;
 	}
-	
+
 	.comment_profile_pic {
 		height: 80upx;
 		width: 80upx;
@@ -505,7 +572,39 @@
 	}
 
 	.comment_text {
+		display: inline-block;
 		font-size: medium;
 		color: #1AAD19;
+		width: 100%;
+	}
+
+	.comment_box {
+		left: 15%;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 80%;
+				/* 识别框 */
+		border: 2upx solid #000000;
+	}
+
+	.time {
+		display: flex;
+		height: 10upx;
+		margin-left: 20upx;
+		margin-top: 10upx;
+	}
+
+	.time_text {
+		font-size: small;
+		color: gray;
+	}
+
+	/* 分割线 */
+	.border_line {
+		width: 40%;
+		margin-left: 40upx;
+		height: 5upx;
+		border-bottom: 5upx solid #8A6DE9;
 	}
 </style>

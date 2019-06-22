@@ -48,9 +48,11 @@
       }
     ]
   },
+  "nvueCompiler": "weex",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "ShortMovie"
+  "appname": "ShortMovie",
+  "compilerVersion": "2.0.1"
 }
