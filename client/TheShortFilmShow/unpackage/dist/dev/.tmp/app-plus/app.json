@@ -35,7 +35,7 @@
         "selectedIconPath": "static/icons/home.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/hot/hot",
         "text": "Hot",
         "iconPath": "static/icons/boxes.png",
         "selectedIconPath": "static/icons/boxes.png"

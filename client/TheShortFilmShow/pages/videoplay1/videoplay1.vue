@@ -6,25 +6,6 @@
 				 @error="videoErrorCallback" controls></video>
 			</view>
 		</view>
-		<!-- 
-		<view class="V-name">
-			<text class="filmname">Name</text>
-		</view> -->
-
-		<!-- <scroll-view class="V-intro" scroll-y="true">
-			<text class="filmintro">fill: 中文释义“填充”。默认值。替换内容拉伸填满整个content box, 不保证保持原有的比例。
-				contain: 中文释义“包含”。保持原有尺寸比例。保证替换内容尺寸一定可以在容器里面放得下。因此，此
-				参数可能会在容器内留下空白。
-				cover: 中文释义“覆盖”。保持原有尺寸比例。保证替换内容尺寸一定大于容器尺寸，宽度和高度至少有一个和容器一致。因此，此参数可能会让替换内容（如图片）部分区域不可见。
-				none: 中文释义“无”。保持原有尺寸比例。同时保持替换内容原始尺寸大小。
-				scale-down: 中文释义“降低”。就好像依次设置了none或contain, 最终呈现的是尺寸比较小的那个。
-		</scroll-view>
-		
-		<view class="V-com-area">
-			<view class="com-write">
-				<input name="comment" class="input" placeholder="Write some comment?" />
-			</view>
-		</view> -->
 		<view class="control_interface">
 			<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
 				<block v-for="(menuTabs,index) in menuTabs" :key="index">
@@ -71,7 +52,6 @@
 								</view>
 								<!-- 分割线 -->
 								<view class="border_line"></view>
-
 								<view class="videocomment">
 									<view class="user_info">
 										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
@@ -81,15 +61,68 @@
 									</view>
 									<view class="comment_box">
 										<view class="time">
-											<text class="time_text">time</text>
+											<text class="time_text">22-06-2019</text>
 										</view>
 										<view class="content_box">
 											<text class="content_text">
 												The magical war has gradually entered a climax. </text>
 											<view class="text_i"></view>
 										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
 									</view>
 								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
+								
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">2-06-2019</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												This film is really nice and I almost remember everything in this film. </text>
+											<view class="text_i"></view>
+										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
+									</view>
+								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
+								
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">17-09-2018</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												I really like the actors in this film. For their really nice outlook and their suits. It's really cool. </text>
+											<view class="text_i"></view>
+										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
+									</view>
+								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
 							</block>
 						</scroll-view>
 					</swiper-item>
@@ -100,6 +133,9 @@
 					<input name="comment" class="input" placeholder="Write some comment?" />
 				</view>
 			</view>
+		</view>
+		<view class="">
+			<image class="like_button" src="../../static/icons/like2.png" mode="aspectFit"></image>
 		</view>
 	</view>
 </template>
@@ -335,6 +371,7 @@
 		width: 100%;
 		background-color: orange;
 		height: 80upx;
+		top: 0;
 		/* 在这里设置导航条高度 */
 
 	}
@@ -414,7 +451,7 @@
 		flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: #f3c1c6;
+		background-color:black;
 		/*调试背景色*/
 		border: 5upx solid #000000;
 		position: absolute;
@@ -491,7 +528,6 @@
 	.new_comment {
 		width: 100%;
 		height: 80upx;
-		background-color: #007AFF;
 	}
 
 	.latest_comment {
@@ -502,12 +538,10 @@
 
 	.videocomment {
 		width: 100%;
-		height: auto;
-		background-color: yellow;
+		height: 26%;
 		display: flex;
 		position: relative;
-		/* 识别框 */
-		border: 2upx solid #000000;
+
 	}
 
 	.user_info {
@@ -521,8 +555,7 @@
 		align-items: center;
 		margin: 20upx 20upx;
 		position: absolute;
-				/* 识别框 */
-		border: 2upx solid #000000;
+
 	}
 
 	.user_info_name {
@@ -541,10 +574,9 @@
 		margin-top: 50upx;
 		margin-bottom: 20upx;
 		position: absolute;
-		height: auto;
+		height: 60%;
 		width: 95%;
-				/* 识别框 */
-		border: 2upx solid #000000;
+
 	}
 
 	.text_i {
@@ -557,17 +589,18 @@
 		width: 100%;
 		text-align: justify;
 		font-size: medium;
+		color: white;
 	}
 
 	.user_info_name_text {
 		font-size: small;
-		color: #000000;
+		color: white;
 	}
 
 	.comment_profile_pic {
 		height: 80upx;
 		width: 80upx;
-		border: 2upx solid #000000;
+		border: 2upx;
 		border-radius: 150upx;
 	}
 
@@ -579,32 +612,55 @@
 	}
 
 	.comment_box {
+		height: 100%;
 		left: 15%;
 		display: flex;
 		flex-direction: column;
-		position: relative;
+		position: absolute;
 		width: 80%;
-				/* 识别框 */
-		border: 2upx solid #000000;
+
 	}
 
 	.time {
 		display: flex;
-		height: 10upx;
-		margin-left: 20upx;
-		margin-top: 10upx;
+		height: 20%;
+		right: 3%;
+		position: absolute;
 	}
 
 	.time_text {
 		font-size: small;
-		color: gray;
+		color: #BBBBBB;
 	}
 
 	/* 分割线 */
 	.border_line {
-		width: 40%;
-		margin-left: 40upx;
-		height: 5upx;
-		border-bottom: 5upx solid #8A6DE9;
+		position: relative;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		height: 2upx;
+		border-bottom: 2upx solid #777777;
+	}
+	
+	/* 评论展开 */
+	.comment_show{
+		width: 25%;
+		height: 15%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		align-content: center;
+		display: flex;
+		font-size: x-small;
+		color: white;
+	}
+	
+	.like_button{
+		height: 16%;
+		width: 16%;
+		position: fixed;
+		bottom: 4%;
+		right: 5%;
 	}
 </style>
