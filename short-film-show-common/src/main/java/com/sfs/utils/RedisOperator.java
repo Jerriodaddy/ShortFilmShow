@@ -179,5 +179,4 @@ public class RedisOperator {
 	public long rpush(String key, String value) {
 		return redisTemplate.opsForList().rightPush(key, value);
 	}
-
 }

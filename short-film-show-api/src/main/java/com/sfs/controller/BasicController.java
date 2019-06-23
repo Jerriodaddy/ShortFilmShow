@@ -1,8 +1,6 @@
 package com.sfs.controller;
  
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sfs.utils.RedisOperator;
@@ -15,7 +13,7 @@ public class BasicController {
 	public RedisOperator redis;
 	
 	public static final String USER_REDIS_SESSION = "user-redis-session"; //Final 均大写
-	
+
 	//文件保存空间地址
 	public static final String FILE_SPACE = "/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp";
 	
@@ -23,5 +21,5 @@ public class BasicController {
 	
 	// 每页分页的记录数
 	public static final Integer PAGE_SIZE = 5;
-	
+
 }

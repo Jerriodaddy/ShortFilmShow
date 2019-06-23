@@ -35,11 +35,14 @@ public class UserController extends BasicController {
 	@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "query")
 	@PostMapping("/uploadFace")
 	public JSONResult uploadFace(String userId, @RequestParam("file") MultipartFile[] files) throws Exception {
+
 		if (StringUtils.isBlank(userId)) {
 			return JSONResult.errorMsg("User id can not be null.");
 		}
 		// 文件保存空间地址
+
 		String fileSpace = FILE_SPACE;
+
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "/" + userId + "/face";
 

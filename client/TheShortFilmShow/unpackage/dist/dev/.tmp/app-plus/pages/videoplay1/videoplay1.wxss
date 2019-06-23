@@ -1,12 +1,54 @@
 
 page {
 		width: 100%;
-		height: 100%;
+		height: 200%;
 		/* display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center; */
 }
+
+	/* 通用属性 */
+.super_center {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-align-content: center;
+		    -ms-flex-line-pack: center;
+		        align-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+}
+.hor_center {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+}
+.row {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		    -ms-flex-direction: row;
+		        flex-direction: row;
+}
+
+	/* 页面属性 */
 .VP-back {
 		height: 100%;
 }
@@ -25,8 +67,9 @@ page {
 		display: flex;
 		width: 100%;
 		height: 350rpx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 }
 .video-pic-box {
 		display: -webkit-box;
@@ -42,8 +85,9 @@ page {
 		width: 221.31rpx;
 		margin: 20rpx 20rpx 20rpx;
 		margin-bottom: 20rpx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 }
 .video-pic-set {
 		height: 297rpx;
@@ -61,8 +105,9 @@ page {
 		        flex-direction: column;
 		margin-left: 50rpx;
 		height: 100%;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 }
 .actors {
 		display: -webkit-box;
@@ -123,6 +168,7 @@ page {
 		width: 100%;
 		background-color: orange;
 		height: 80rpx;
+		top: 0;
 		/* 在这里设置导航条高度 */
 }
 .top-menu-view .menu-one-view {
@@ -217,8 +263,10 @@ page {
 		        flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: #FFFFFF;
+		background-color:black;
+		/*调试背景色*/
 		border: 5rpx solid #000000;
+		position: absolute;
 }
 .swiper-one-list {
 		height: 100%;
@@ -303,5 +351,172 @@ page {
 .filmpic {
 		width: 245.9rpx;
 		height: 330rpx;
+}
+
+	/* 评论属性 */
+.new_comment {
+		width: 100%;
+		height: 80rpx;
+}
+.latest_comment {
+		font-size: large;
+		color: white;
+		margin-left: 40rpx;
+}
+.videocomment {
+		width: 100%;
+		height: 26%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		position: relative;
+}
+.user_info {
+		height: auto;
+		width: auto;
+		min-width: 40rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		-webkit-align-content: center;
+		    -ms-flex-line-pack: center;
+		        align-content: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		margin: 20rpx 20rpx;
+		position: absolute;
+}
+.user_info_name {
+		width: auto;
+		min-width: 40rpx;
+		max-width: 80rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-align-content: center;
+		    -ms-flex-line-pack: center;
+		        align-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+}
+.content_box {
+		margin-left: 20rpx;
+		margin-right: 40rpx;
+		margin-top: 50rpx;
+		margin-bottom: 20rpx;
+		position: absolute;
+		height: 60%;
+		width: 95%;
+}
+.text_i {
+		display: inline-block;
+		width: 100%;
+}
+.content_text {
+		display: inline-block;
+		width: 100%;
+		text-align: justify;
+		font-size: medium;
+		color: white;
+}
+.user_info_name_text {
+		font-size: small;
+		color: white;
+}
+.comment_profile_pic {
+		height: 80rpx;
+		width: 80rpx;
+		border: 2rpx;
+		-webkit-border-radius: 150rpx;
+		        border-radius: 150rpx;
+}
+.comment_text {
+		display: inline-block;
+		font-size: medium;
+		color: #1AAD19;
+		width: 100%;
+}
+.comment_box {
+		height: 100%;
+		left: 15%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		        flex-direction: column;
+		position: absolute;
+		width: 80%;
+}
+.time {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		height: 20%;
+		right: 3%;
+		position: absolute;
+}
+.time_text {
+		font-size: small;
+		color: #BBBBBB;
+}
+
+	/* 分割线 */
+.border_line {
+		position: relative;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		height: 2rpx;
+		border-bottom: 2rpx solid #777777;
+}
+
+	/* 评论展开 */
+.comment_show{
+		width: 25%;
+		height: 15%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		-webkit-align-content: center;
+		    -ms-flex-line-pack: center;
+		        align-content: center;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		font-size: x-small;
+		color: white;
+}
+.like_button{
+		height: 16%;
+		width: 16%;
+		position: fixed;
+		bottom: 4%;
+		right: 5%;
 }
 

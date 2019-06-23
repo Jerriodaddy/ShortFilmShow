@@ -2,51 +2,33 @@
 	<view class="VP-back">
 		<view class="VP-screen">
 			<view class="screen">
-				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4" @error="videoErrorCallback" controls></video>
+				<video class="play-video" id="Vendetta (ven·dét·ta)" src="http://1258775435.vod2.myqcloud.com/2512c371vodcq1258775435/fbd4a1c45285890787780845965/GtCUUl8lkqIA.mp4"
+				 @error="videoErrorCallback" controls></video>
 			</view>
 		</view>
-		<!-- 
-		<view class="V-name">
-			<text class="filmname">Name</text>
-		</view> -->
-
-		<!-- <scroll-view class="V-intro" scroll-y="true">
-			<text class="filmintro">fill: 中文释义“填充”。默认值。替换内容拉伸填满整个content box, 不保证保持原有的比例。
-				contain: 中文释义“包含”。保持原有尺寸比例。保证替换内容尺寸一定可以在容器里面放得下。因此，此
-				参数可能会在容器内留下空白。
-				cover: 中文释义“覆盖”。保持原有尺寸比例。保证替换内容尺寸一定大于容器尺寸，宽度和高度至少有一个和容器一致。因此，此参数可能会让替换内容（如图片）部分区域不可见。
-				none: 中文释义“无”。保持原有尺寸比例。同时保持替换内容原始尺寸大小。
-				scale-down: 中文释义“降低”。就好像依次设置了none或contain, 最终呈现的是尺寸比较小的那个。
-		</scroll-view>
-		
-		<view class="V-com-area">
-			<view class="com-write">
-				<input name="comment" class="input" placeholder="Write some comment?" />
-			</view>
-		</view> -->
-
-		<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
-			<block v-for="(menuTabs,index) in menuTabs" :key="index">
-				<view class="menu-one-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
-					<view :class="[currentTab==index ? 'menu-one-act' : 'menu-one']">
-						<view class="menu-one-txt">{{menuTabs.name}}</view>
-						<view class="menu-one-bottom">
-							<view class="menu-one-bottom-color"></view>
+		<view class="control_interface">
+			<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
+				<block v-for="(menuTabs,index) in menuTabs" :key="index">
+					<view class="menu-one-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
+						<view :class="[currentTab==index ? 'menu-one-act' : 'menu-one']">
+							<view class="menu-one-txt">{{menuTabs.name}}</view>
+							<view class="menu-one-bottom">
+								<view class="menu-one-bottom-color"></view>
+							</view>
 						</view>
 					</view>
-				</view>
-			</block>
-		</scroll-view>
+				</block>
+			</scroll-view>
 
-		<swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
-			<block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
-				<swiper-item>
-					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
-						<block>
-							<view class="video-info-card">
-								<view class="video-pic-box">
-									<image class="video-pic-set" src="../../static/assets/Andrea Facheris.jpg" mode=""></image>
-								</view>
+			<swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
+				<block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
+					<swiper-item>
+						<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+							<block>
+								<view class="video-info-card">
+									<view class="video-pic-box">
+										<image class="video-pic-set" src="../../static/assets/images2.jpg" mode=""></image>
+									</view>
 									<view class="video-info-box">
 										<text class="filmname">Vendetta (ven·dét·ta)</text>
 										<view class="actors">
@@ -54,19 +36,106 @@
 											<text class="actor-name">Andrea Facheris</text>
 										</view>
 									</view>
-							</view>
+								</view>
 
-							<text class="filmintro">
-							</text>
-						</block>
-					</scroll-view>
-				</swiper-item>
-			</block>
-		</swiper>
-		<view class="V-com-area">
-			<view class="com-write">
-				<input name="comment" class="input" placeholder="Write some comment?" />
+								<text class="filmintro">
+								</text>
+							</block>
+						</scroll-view>
+					</swiper-item>
+
+					<swiper-item>
+						<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
+							<block>
+								<view class="new_comment hor_center">
+									<text class="latest_comment hor_center">Latest comment</text>
+								</view>
+								<!-- 分割线 -->
+								<view class="border_line"></view>
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">22-06-2019</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												The magical war has gradually entered a climax. </text>
+											<view class="text_i"></view>
+										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
+									</view>
+								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
+								
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">2-06-2019</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												This film is really nice and I almost remember everything in this film. </text>
+											<view class="text_i"></view>
+										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
+									</view>
+								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
+								
+								<view class="videocomment">
+									<view class="user_info">
+										<image class="comment_profile_pic" src="../../static/icons/logo.png"></image>
+										<view class="user_info_name">
+											<text class="user_info_name_text">Guetta</text>
+										</view>
+									</view>
+									<view class="comment_box">
+										<view class="time">
+											<text class="time_text">17-09-2018</text>
+										</view>
+										<view class="content_box">
+											<text class="content_text">
+												I really like the actors in this film. For their really nice outlook and their suits. It's really cool. </text>
+											<view class="text_i"></view>
+										</view>
+										<view class="comment_show super_center">
+											Show more
+										</view>
+									</view>
+								</view>
+									<!-- 分割线 -->
+								<view class="border_line"></view>
+							</block>
+						</scroll-view>
+					</swiper-item>
+				</block>
+			</swiper>
+			<view class="V-com-area">
+				<view class="com-write">
+					<input name="comment" class="input" placeholder="Write some comment?" />
+				</view>
 			</view>
+		</view>
+		<view class="">
+			<image class="like_button" src="../../static/icons/like2.png" mode="aspectFit"></image>
 		</view>
 	</view>
 </template>
@@ -81,7 +150,7 @@
 				menuTabs: [{
 					name: 'Detail'
 				}, {
-					name: 'Commit'
+					name: 'Comment'
 				}],
 
 				actorinfo: [{
@@ -114,19 +183,22 @@
 			this.duration = e.target.value
 		},
 
-		// 				onLoad: function() {
-		// 					//初始化数据
-		// 					for (var i = 0; i < this.swiperDateList.length; i++) {
-		// 						this.getDateList(i);
-		// 					}
-		// 				},
-		// 		
 		onLoad: function() {
+			//初始化数据
+			for (var i = 0; i < this.swiperDateList.length; i++) {
+				this.getDateList(i);
+			};
 			uni.setNavigationBarTitle({
 				title: 'TheShortFilmShow'
 			});
-
 		},
+
+		// 		onLoad: function() {
+		// 			uni.setNavigationBarTitle({
+		// 				title: 'TheShortFilmShow'
+		// 			});
+		//}, 
+
 		methods: {
 			swichMenu: async function(current) { //点击其中一个 menu
 				if (this.currentTab == current) {
@@ -136,6 +208,9 @@
 					this.setScrollLeft(current);
 				}
 			},
+
+			// preindex = 默认的index,
+			// current index
 			swiperChange: async function(e) {
 				let index = e.target.current;
 				this.setScrollLeft(index);
@@ -179,12 +254,32 @@
 <style>
 	page {
 		width: 100%;
-		height: 100%;
+		height: 200%;
 		/* display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center; */
 	}
+
+	/* 通用属性 */
+	.super_center {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+	}
+
+	.hor_center {
+		display: flex;
+		align-items: center;
+	}
+
+	.row {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* 页面属性 */
 
 	.VP-back {
 		height: 100%;
@@ -197,15 +292,16 @@
 	.V-intro {
 		height: 50%;
 	}
-
+	
 	/* 影片图片、名字、评分显示 */
 
 	.video-info-card {
 		display: flex;
 		width: 100%;
 		height: 350upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-box {
@@ -215,22 +311,24 @@
 		width: 221.31upx;
 		margin: 20upx 20upx 20upx;
 		margin-bottom: 20upx;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.video-pic-set {
 		height: 297upx;
 		width: 100%;
 	}
-	
+
 	.video-info-box {
 		display: flex;
 		flex-direction: column;
 		margin-left: 50upx;
 		height: 100%;
-/* 		border: 1upx solid black;
- */		/* 测试用边框显示，正式版请删除本行与上一行 */
+		/* 		border: 1upx solid black;
+ */
+		/* 测试用边框显示，正式版请删除本行与上一行 */
 	}
 
 	.actors {
@@ -273,6 +371,7 @@
 		width: 100%;
 		background-color: orange;
 		height: 80upx;
+		top: 0;
 		/* 在这里设置导航条高度 */
 
 	}
@@ -352,8 +451,10 @@
 		flex: 1;
 		width: 100%;
 		height: 60%;
-		background-color: #FFFFFF;
+		background-color:black;
+		/*调试背景色*/
 		border: 5upx solid #000000;
+		position: absolute;
 	}
 
 	.swiper-one-list {
@@ -420,5 +521,146 @@
 	.filmpic {
 		width: 245.9upx;
 		height: 330upx;
+	}
+
+	/* 评论属性 */
+
+	.new_comment {
+		width: 100%;
+		height: 80upx;
+	}
+
+	.latest_comment {
+		font-size: large;
+		color: white;
+		margin-left: 40upx;
+	}
+
+	.videocomment {
+		width: 100%;
+		height: 26%;
+		display: flex;
+		position: relative;
+
+	}
+
+	.user_info {
+		height: auto;
+		width: auto;
+		min-width: 40upx;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		margin: 20upx 20upx;
+		position: absolute;
+
+	}
+
+	.user_info_name {
+		width: auto;
+		min-width: 40upx;
+		max-width: 80upx;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.content_box {
+		margin-left: 20upx;
+		margin-right: 40upx;
+		margin-top: 50upx;
+		margin-bottom: 20upx;
+		position: absolute;
+		height: 60%;
+		width: 95%;
+
+	}
+
+	.text_i {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.content_text {
+		display: inline-block;
+		width: 100%;
+		text-align: justify;
+		font-size: medium;
+		color: white;
+	}
+
+	.user_info_name_text {
+		font-size: small;
+		color: white;
+	}
+
+	.comment_profile_pic {
+		height: 80upx;
+		width: 80upx;
+		border: 2upx;
+		border-radius: 150upx;
+	}
+
+	.comment_text {
+		display: inline-block;
+		font-size: medium;
+		color: #1AAD19;
+		width: 100%;
+	}
+
+	.comment_box {
+		height: 100%;
+		left: 15%;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		width: 80%;
+
+	}
+
+	.time {
+		display: flex;
+		height: 20%;
+		right: 3%;
+		position: absolute;
+	}
+
+	.time_text {
+		font-size: small;
+		color: #BBBBBB;
+	}
+
+	/* 分割线 */
+	.border_line {
+		position: relative;
+		width: 80%;
+		left: 10%;
+		right: 10%;
+		height: 2upx;
+		border-bottom: 2upx solid #777777;
+	}
+	
+	/* 评论展开 */
+	.comment_show{
+		width: 25%;
+		height: 15%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		align-content: center;
+		display: flex;
+		font-size: x-small;
+		color: white;
+	}
+	
+	.like_button{
+		height: 16%;
+		width: 16%;
+		position: fixed;
+		bottom: 4%;
+		right: 5%;
 	}
 </style>

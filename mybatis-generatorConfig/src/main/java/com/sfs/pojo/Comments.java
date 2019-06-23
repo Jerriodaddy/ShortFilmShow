@@ -13,7 +13,7 @@ public class Comments {
     private String videoId;
 
     /**
-     * p
+     * 评论人
      */
     @Column(name = "from_user_id")
     private String fromUserId;
@@ -62,18 +62,18 @@ public class Comments {
     }
 
     /**
-     * 获取p
+     * 获取评论人
      *
-     * @return from_user_id - p
+     * @return from_user_id - 评论人
      */
     public String getFromUserId() {
         return fromUserId;
     }
 
     /**
-     * 设置p
+     * 设置评论人
      *
-     * @param fromUserId p
+     * @param fromUserId 评论人
      */
     public void setFromUserId(String fromUserId) {
         this.fromUserId = fromUserId;
