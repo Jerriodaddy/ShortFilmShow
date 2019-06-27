@@ -23,7 +23,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-@RestController // = @Controller + @ResponseBody
+@RestController
 @Api(value = "User workflow logic")
 @RequestMapping("/user")
 public class UserController extends BasicController {

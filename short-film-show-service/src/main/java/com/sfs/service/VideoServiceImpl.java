@@ -10,20 +10,35 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sfs.mapper.SearchRecordsMapper;
+import com.sfs.mapper.UsersLikeVideosMapper;
+import com.sfs.mapper.UsersMapper;
 import com.sfs.mapper.VideosMapper;
 import com.sfs.mapper.VideosMapperCustom;
+import com.sfs.pojo.SearchRecords;
+import com.sfs.pojo.UsersLikeVideos;
 import com.sfs.pojo.Videos;
 import com.sfs.pojo.vo.VideosVO;
 import com.sfs.utils.PagedResult;
+
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
 
 @Service
 public class VideoServiceImpl implements VideoService {
 
 	@Autowired
 	private VideosMapper videosMapper;
-	
+
 	@Autowired
-	private VideosMapperCustom videoMapperCustom;
+	private VideosMapperCustom videosMapperCustom;
+
+	@Autowired
+	private SearchRecordsMapper searchRecordsMapper;
+
+	@Autowired
+	private UsersLikeVideosMapper usersLikeVideosMapper;
+
 	@Autowired
 	private Sid sid;
 
@@ -35,7 +50,7 @@ public class VideoServiceImpl implements VideoService {
 		videosMapper.insertSelective(video);
 		return id;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void updateVideoCover(String videoId, String coverPath) {
@@ -45,26 +60,73 @@ public class VideoServiceImpl implements VideoService {
 		videosMapper.updateByPrimaryKeySelective(video);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public PagedResult getAllVideosByCategory(Integer page, Integer pageSize, String Category) {
+	public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize) {
 
-		
-		return null;
-	}
+		// 保存搜索词
+		String desc = video.getVideoDesc();
+		if (isSaveRecord != null && isSaveRecord == 1) {
+			SearchRecords record = new SearchRecords();
+			String recordId = sid.nextShort();
+			record.setId(recordId);
+			record.setContent(desc);
+			searchRecordsMapper.insert(record);
+		}
 
-	@Override
-	public PagedResult getAllVideos(Integer page, Integer pageSize) {
 		PageHelper.startPage(page, pageSize);
-		List<VideosVO> list = videoMapperCustom.queryAllVideos();
-		
+		List<VideosVO> list = videosMapperCustom.queryAllVideos(desc);
+
 		PageInfo<VideosVO> pageList = new PageInfo<>(list);
 		PagedResult pagedResult = new PagedResult();
 		pagedResult.setPage(page);
 		pagedResult.setTotal(pageList.getPages());
 		pagedResult.setRows(list);
-		pagedResult.setRecords(pageList.getTotal()); 
-		
+		pagedResult.setRecords(pageList.getTotal());
+
 		return pagedResult;
 	}
- 
+
+	@Override
+	public PagedResult getAllVideosByCategory(Integer page, Integer pageSize, String Category) {
+
+		return null;
+	}
+
+	@Transactional(propagation = Propagation.SUPPORTS)
+	@Override
+	public List<String> getHotWords() {
+		return searchRecordsMapper.getHotWords();
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
+	public void userLikeVideo(String userId, String videoId) {
+		// 1. 保存 UserLikeVideos 关联关系表
+		String likeId = sid.nextShort();
+		UsersLikeVideos ulv = new UsersLikeVideos();
+		ulv.setId(likeId);
+		ulv.setUserId(userId);
+		ulv.setVideoId(videoId);
+		usersLikeVideosMapper.insert(ulv);
+
+		// 2. 视频喜欢数量累加
+		videosMapperCustom.addVideoLikeCount(videoId);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
+	public void userUnlikeVideo(String userId, String videoId) {
+		// 1. 删除 UserLikeVideos 关联关系表
+		Example example = new Example(UsersLikeVideos.class);
+		Criteria criteria = example.createCriteria();
+		criteria.andEqualTo("userId", userId);
+		criteria.andEqualTo("videoId", videoId);
+		
+		usersLikeVideosMapper.deleteByExample(example);
+
+		// 2. 视频喜欢数量累减
+		videosMapperCustom.reduceVideoLikeCount(videoId);
+	}
+
 }

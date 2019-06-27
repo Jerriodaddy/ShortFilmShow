@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -173,18 +174,61 @@ public class VideoController extends BasicController {
 		return JSONResult.ok(); // 返回头像地址
 	}
 	
+	/**
+	 * 
+	 * @param video
+	 * @param isSaveRecord 1 - 需要保持
+	 * 			   0 or null - 不需要保存
+	 * @param page
+	 * @return
+	 * @throws Exception
+	 */
 	@ApiOperation(value = "Query all video by paging", notes = "default size is 5.")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "page", required = true, dataType = "Integer", paramType = "form"),
+		@ApiImplicitParam(name = "isSaveRecord", required = false, dataType = "Integer", paramType = "form"),
+		@ApiImplicitParam(name = "page", required = false, dataType = "Integer", paramType = "form"),
 	})
 	@PostMapping(value="/showAll")
-	public JSONResult showAll(Integer page) throws Exception{
+	public JSONResult showAll(@RequestBody Videos video, Integer isSaveRecord,
+			Integer page) throws Exception{
+		
 		if (page == null) {
 			page = 1;
 		}
-		
-		PagedResult result = videoService.getAllVideos(page, PAGE_SIZE);
+
+		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, PAGE_SIZE);
 		return JSONResult.ok(result);
 	}
 	
+	@ApiOperation(value = "Get hot words")
+	@PostMapping(value="/hot")
+	public JSONResult showAll() throws Exception{
+		return JSONResult.ok(videoService.getHotWords());
+	}
+	
+	@ApiOperation(value = "User like the video")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "form"),
+		@ApiImplicitParam(name = "videoId", required = true, dataType = "String", paramType = "form"),
+	})
+	@PostMapping(value="/userLike")
+	public JSONResult userLike(String userId, String videoId) throws Exception{
+		//TODO userId 和 video Id 需有记录
+		
+		videoService.userLikeVideo(userId, videoId);
+		return JSONResult.ok();
+	}
+	
+	@ApiOperation(value = "User unlike the video")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "form"),
+		@ApiImplicitParam(name = "videoId", required = true, dataType = "String", paramType = "form"),
+	})
+	@PostMapping(value="/userUnLike")
+	public JSONResult userUnLike(String userId, String videoId) throws Exception{
+		//TODO userId 和 video Id 需有记录
+		
+		videoService.userUnlikeVideo(userId, videoId);
+		return JSONResult.ok();
+	}
 }
