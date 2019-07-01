@@ -25,7 +25,7 @@
 		<result column="popularity" property="popularity"
 			jdbcType="BIGINT" />
 		<result column="status" property="status" jdbcType="INTEGER" />
-		<result column="create_time" property="createTime"
+		<result column="create_date" property="createDate"
 			jdbcType="TIMESTAMP" />
 
 		<result column="face_image" property="faceImage"
@@ -45,7 +45,7 @@
 			and v.video_desc like '%${videoDesc}%'
 		</if>
 		and V.status = 1
-		order by v.create_time desc
+		order by v.create_date desc
 	</select>
 
 	<select id="queryAllVideosByCategory" resultMap="BaseResultMap">
@@ -54,7 +54,7 @@
 		where
 		1 = 1
 		and v.status = 1
-		order by v.create_time desc
+		order by v.create_date desc
 	</select>
 
 	<update id="addVideoLikeCount" parameterType="String">

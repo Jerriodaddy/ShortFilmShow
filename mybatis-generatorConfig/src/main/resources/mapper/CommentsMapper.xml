@@ -8,9 +8,11 @@
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="video_id" property="videoId" jdbcType="VARCHAR" />
     <result column="from_user_id" property="fromUserId" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
-    <result column="dislike_num" property="dislikeNum" jdbcType="INTEGER" />
-    <result column="like_num" property="likeNum" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="dislike_num" property="dislikeNum" jdbcType="BIGINT" />
+    <result column="like_num" property="likeNum" jdbcType="BIGINT" />
+    <result column="father_comment_id" property="fatherCommentId" jdbcType="VARCHAR" />
+    <result column="to_user_id" property="toUserId" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
   </resultMap>
 </mapper>

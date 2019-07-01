@@ -12,5 +12,8 @@
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="face_image" property="faceImage" jdbcType="VARCHAR" />
+    <result column="fans_num" property="fansNum" jdbcType="INTEGER" />
+    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
   </resultMap>
 </mapper>

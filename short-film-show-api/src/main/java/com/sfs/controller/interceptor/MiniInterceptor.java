@@ -32,7 +32,9 @@ public class MiniInterceptor implements HandlerInterceptor {
 
 		String userId = request.getHeader("userId");
 		String userToken = request.getHeader("userToken");
-
+		
+//		System.out.println("userId=" + userId);
+//		System.out.println("userToken=" + userToken);
 //		returnErrorResponse(response, new JSONResult().errorTokenMsg("Please login"));
 		
 		if (StringUtils.isNoneBlank(userId) && StringUtils.isNoneBlank(userToken)) {

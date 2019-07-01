@@ -25,7 +25,7 @@
 		<result column="popularity" property="popularity"
 			jdbcType="BIGINT" />
 		<result column="status" property="status" jdbcType="INTEGER" />
-		<result column="create_time" property="createTime"
+		<result column="create_date" property="createDate"
 			jdbcType="TIMESTAMP" />
 	</resultMap>
 </mapper>

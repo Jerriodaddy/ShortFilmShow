@@ -1,43 +1,34 @@
 package com.sfs.pojo.vo;
 
 import java.util.Date;
-import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sfs.pojo.Users;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-@ApiModel(value = "User pojo", description = "This is the user object")
 public class UsersVO {
-	@ApiModelProperty(hidden = true)
     private String id;
 	
-	@ApiModelProperty(hidden = true) 
 	private String userToken;
-    /**
-     * 昵称
-     */
-    @ApiModelProperty(value = "username", example = "username",required = true)
+
     private String username;
     
-    @ApiModelProperty(value = "password", example = "123456",required = true)
     @JsonIgnore
     private String password;
-    
+
     private String email;
 
-    @ApiModelProperty(hidden = true)
     private String nickname;
 
-    @ApiModelProperty(hidden = true)
     private Date createDate;
 
-    @ApiModelProperty(hidden = true)
     private String faceImage;
 
-    /**
+	private Integer fansNum;
+
+    private Integer followNum;
+    
+    private Integer gender;
+
+	/**
      * @return id
      */
     public String getId() {
@@ -145,5 +136,30 @@ public class UsersVO {
     
     public void setUserToken(String userToken) {
 		this.userToken = userToken;
+	}
+    
+    public Integer getFansNum() {
+		return fansNum;
+	}
+
+	public void setFansNum(Integer fansNum) {
+		this.fansNum = fansNum;
+	}
+
+	public Integer getFollowNum() {
+		return followNum;
+	}
+
+	public void setFollowNum(Integer followNum) {
+		this.followNum = followNum;
+	}
+	
+
+    public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
 	}
 }

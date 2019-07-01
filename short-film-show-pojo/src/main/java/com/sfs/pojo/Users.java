@@ -24,6 +24,18 @@ public class Users {
     @Column(name = "face_image")
     private String faceImage;
 
+    @Column(name = "fans_num")
+    private Integer fansNum;
+
+    @Column(name = "follow_num")
+    private Integer followNum;
+
+    /**
+     * 0 : Woman
+     * 1 : Man 
+     */
+    private Integer gender;
+
     /**
      * @return id
      */
@@ -124,5 +136,51 @@ public class Users {
      */
     public void setFaceImage(String faceImage) {
         this.faceImage = faceImage;
+    }
+
+    /**
+     * @return fans_num
+     */
+    public Integer getFansNum() {
+        return fansNum;
+    }
+
+    /**
+     * @param fansNum
+     */
+    public void setFansNum(Integer fansNum) {
+        this.fansNum = fansNum;
+    }
+
+    /**
+     * @return follow_num
+     */
+    public Integer getFollowNum() {
+        return followNum;
+    }
+
+    /**
+     * @param followNum
+     */
+    public void setFollowNum(Integer followNum) {
+        this.followNum = followNum;
+    }
+
+    /**
+     * 获取0 : Woman 1: Man
+     *
+     * @return gender - 0 : Woman 1: Man
+     */
+    public Integer getGender() {
+        return gender;
+    }
+
+    /**
+     * 设置0 : Woman 1: Man
+     *
+     * @param gender 0 : Woman 1: Man
+     */
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 }

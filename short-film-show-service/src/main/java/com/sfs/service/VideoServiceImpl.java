@@ -1,5 +1,6 @@
 package com.sfs.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.n3r.idworker.Sid;
@@ -10,16 +11,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sfs.mapper.CommentsMapper;
+import com.sfs.mapper.CommentsMapperCustom;
 import com.sfs.mapper.SearchRecordsMapper;
 import com.sfs.mapper.UsersLikeVideosMapper;
 import com.sfs.mapper.UsersMapper;
 import com.sfs.mapper.VideosMapper;
 import com.sfs.mapper.VideosMapperCustom;
+import com.sfs.pojo.Comments;
 import com.sfs.pojo.SearchRecords;
 import com.sfs.pojo.UsersLikeVideos;
 import com.sfs.pojo.Videos;
+import com.sfs.pojo.vo.CommentsVO;
 import com.sfs.pojo.vo.VideosVO;
 import com.sfs.utils.PagedResult;
+import com.sfs.utils.TimeAgoUtils;
 
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
@@ -38,6 +44,12 @@ public class VideoServiceImpl implements VideoService {
 
 	@Autowired
 	private UsersLikeVideosMapper usersLikeVideosMapper;
+
+	@Autowired
+	private CommentsMapper commentsMapper;
+
+	@Autowired
+	private CommentsMapperCustom commentsMapperCustom;
 
 	@Autowired
 	private Sid sid;
@@ -122,11 +134,43 @@ public class VideoServiceImpl implements VideoService {
 		Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("userId", userId);
 		criteria.andEqualTo("videoId", videoId);
-		
+
 		usersLikeVideosMapper.deleteByExample(example);
 
 		// 2. 视频喜欢数量累减
 		videosMapperCustom.reduceVideoLikeCount(videoId);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
+	public void saveComment(Comments comment) {
+		String id = sid.nextShort();
+		comment.setId(id);
+		comment.setCreateDate(new Date());
+		commentsMapper.insertSelective(comment);
+	}
+
+	@Transactional(propagation = Propagation.SUPPORTS)
+	@Override
+	public PagedResult getAllComments(String videoId, Integer page, Integer pageSize) {
+		PageHelper.startPage(page, pageSize);
+
+		List<CommentsVO> list = commentsMapperCustom.queryComments(videoId);
+		for (CommentsVO c : list) {
+			// add timeAgo
+			String timeAgo = TimeAgoUtils.format(c.getCreateDate());
+			c.setTimeAgoStr(timeAgo);
+		}
+		
+		PageInfo<CommentsVO> pageList = new PageInfo<>(list);
+		
+		PagedResult pagedResult = new PagedResult();
+		pagedResult.setPage(page);
+		pagedResult.setTotal(pageList.getPages());
+		pagedResult.setRows(list);
+		pagedResult.setRecords(pageList.getTotal());
+
+		return pagedResult;
 	}
 
 }

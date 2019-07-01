@@ -1,6 +1,7 @@
 package com.sfs.service;
 
 import com.sfs.pojo.Users;
+import com.sfs.pojo.UsersReport;
 
 public interface UserService {
 	/**
@@ -25,4 +26,22 @@ public interface UserService {
 	public void updateUserInfo(Users user);
 	
 	public Users queryUserInfo(String userId);
+	
+	public boolean isUserLikeVideo(String userId, String videoId);
+	
+	/**
+	 * @Description 增加用户粉丝关系
+	 * @param userId
+	 * @param fanId
+	 */
+	public void saveUserFanRelation(String userId, String fanId);
+	
+	/**
+	 * @Description 删除用户粉丝关系
+	 * @param userId
+	 * @param fanId
+	 */
+	public void deleteUserFanRelation(String userId, String fanId);
+
+	public void reportUser(UsersReport usersReport);
 }

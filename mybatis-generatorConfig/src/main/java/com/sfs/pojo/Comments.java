@@ -1,5 +1,6 @@
 package com.sfs.pojo;
 
+import java.util.Date;
 import javax.persistence.*;
 
 public class Comments {
@@ -7,7 +8,7 @@ public class Comments {
     private String id;
 
     /**
-     * 所属文章id
+     * 所属视频id
      */
     @Column(name = "video_id")
     private String videoId;
@@ -18,14 +19,20 @@ public class Comments {
     @Column(name = "from_user_id")
     private String fromUserId;
 
-    @Column(name = "create_time")
-    private String createTime;
+    @Column(name = "create_date")
+    private Date createDate;
 
     @Column(name = "dislike_num")
-    private Integer dislikeNum;
+    private Long dislikeNum;
 
     @Column(name = "like_num")
-    private Integer likeNum;
+    private Long likeNum;
+
+    @Column(name = "father_comment_id")
+    private String fatherCommentId;
+
+    @Column(name = "to_user_id")
+    private String toUserId;
 
     private String comment;
 
@@ -44,18 +51,18 @@ public class Comments {
     }
 
     /**
-     * 获取所属文章id
+     * 获取所属视频id
      *
-     * @return video_id - 所属文章id
+     * @return video_id - 所属视频id
      */
     public String getVideoId() {
         return videoId;
     }
 
     /**
-     * 设置所属文章id
+     * 设置所属视频id
      *
-     * @param videoId 所属文章id
+     * @param videoId 所属视频id
      */
     public void setVideoId(String videoId) {
         this.videoId = videoId;
@@ -80,45 +87,73 @@ public class Comments {
     }
 
     /**
-     * @return create_time
+     * @return create_date
      */
-    public String getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
     /**
-     * @param createTime
+     * @param createDate
      */
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     /**
      * @return dislike_num
      */
-    public Integer getDislikeNum() {
+    public Long getDislikeNum() {
         return dislikeNum;
     }
 
     /**
      * @param dislikeNum
      */
-    public void setDislikeNum(Integer dislikeNum) {
+    public void setDislikeNum(Long dislikeNum) {
         this.dislikeNum = dislikeNum;
     }
 
     /**
      * @return like_num
      */
-    public Integer getLikeNum() {
+    public Long getLikeNum() {
         return likeNum;
     }
 
     /**
      * @param likeNum
      */
-    public void setLikeNum(Integer likeNum) {
+    public void setLikeNum(Long likeNum) {
         this.likeNum = likeNum;
+    }
+
+    /**
+     * @return father_comment_id
+     */
+    public String getFatherCommentId() {
+        return fatherCommentId;
+    }
+
+    /**
+     * @param fatherCommentId
+     */
+    public void setFatherCommentId(String fatherCommentId) {
+        this.fatherCommentId = fatherCommentId;
+    }
+
+    /**
+     * @return to_user_id
+     */
+    public String getToUserId() {
+        return toUserId;
+    }
+
+    /**
+     * @param toUserId
+     */
+    public void setToUserId(String toUserId) {
+        this.toUserId = toUserId;
     }
 
     /**

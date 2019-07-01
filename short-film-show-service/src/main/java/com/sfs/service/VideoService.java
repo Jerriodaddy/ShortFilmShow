@@ -2,6 +2,9 @@ package com.sfs.service;
 
 import java.util.List;
 
+import javax.xml.stream.events.Comment;
+
+import com.sfs.pojo.Comments;
 import com.sfs.pojo.Videos;
 import com.sfs.utils.PagedResult;
 
@@ -35,4 +38,14 @@ public interface VideoService {
 	 *  @Description: 用户取消点赞/不喜欢视频
 	 */
 	public void userUnlikeVideo(String userId, String videoId);
+	
+	/**
+	 *  @Description: 保存视频评论
+	 */
+	public void saveComment(Comments comment);
+	
+	/**
+	 *  @Description: 获取视频评论
+	 */
+	public PagedResult getAllComments(String videoId, Integer page, Integer pageSize);
 }

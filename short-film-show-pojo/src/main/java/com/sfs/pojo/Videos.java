@@ -30,6 +30,19 @@ public class Videos {
     @Column(name = "video_path")
     private String videoPath;
 
+    @Column(name = "video_name")
+    private String videoName;
+
+    private String director;
+
+    private String actors;
+
+    /**
+     * 视频描述
+     */
+    @Column(name = "video_desc")
+    private String videoDesc;
+
     /**
      * 视频时长
      */
@@ -41,12 +54,6 @@ public class Videos {
 
     @Column(name = "video_width")
     private Integer videoWidth;
-
-    /**
-     * 视频描述
-     */
-    @Column(name = "video_desc")
-    private String videoDesc;
 
     /**
      * 赞数
@@ -73,8 +80,8 @@ public class Videos {
     /**
      * 发布时间
      */
-    @Column(name = "create_time")
-    private Date createTime;
+    @Column(name = "create_date")
+    private Date createDate;
 
     /**
      * @return id
@@ -163,6 +170,66 @@ public class Videos {
     }
 
     /**
+     * @return video_name
+     */
+    public String getVideoName() {
+        return videoName;
+    }
+
+    /**
+     * @param videoName
+     */
+    public void setVideoName(String videoName) {
+        this.videoName = videoName;
+    }
+
+    /**
+     * @return director
+     */
+    public String getDirector() {
+        return director;
+    }
+
+    /**
+     * @param director
+     */
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    /**
+     * @return actors
+     */
+    public String getActors() {
+        return actors;
+    }
+
+    /**
+     * @param actors
+     */
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    /**
+     * 获取视频描述
+     *
+     * @return video_desc - 视频描述
+     */
+    public String getVideoDesc() {
+        return videoDesc;
+    }
+
+    /**
+     * 设置视频描述
+     *
+     * @param videoDesc 视频描述
+     */
+    public void setVideoDesc(String videoDesc) {
+        this.videoDesc = videoDesc;
+    }
+
+    /**
      * 获取视频时长
      *
      * @return video_seconds - 视频时长
@@ -206,24 +273,6 @@ public class Videos {
      */
     public void setVideoWidth(Integer videoWidth) {
         this.videoWidth = videoWidth;
-    }
-
-    /**
-     * 获取视频描述
-     *
-     * @return video_desc - 视频描述
-     */
-    public String getVideoDesc() {
-        return videoDesc;
-    }
-
-    /**
-     * 设置视频描述
-     *
-     * @param videoDesc 视频描述
-     */
-    public void setVideoDesc(String videoDesc) {
-        this.videoDesc = videoDesc;
     }
 
     /**
@@ -301,18 +350,18 @@ public class Videos {
     /**
      * 获取发布时间
      *
-     * @return create_time - 发布时间
+     * @return create_date - 发布时间
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
     /**
      * 设置发布时间
      *
-     * @param createTime 发布时间
+     * @param createDate 发布时间
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

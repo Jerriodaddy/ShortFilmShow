@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sfs.enums.VideoStatusEnum;
+import com.sfs.pojo.Comments;
 import com.sfs.pojo.Users;
 import com.sfs.pojo.Videos;
 import com.sfs.pojo.vo.UsersVO;
@@ -107,7 +108,7 @@ public class VideoController extends BasicController {
 		video.setVideoDesc(desc);
 		video.setVideoPath(uploadPathDB);
 		video.setStatus(VideoStatusEnum.SUCCESS.value);
-		video.setCreateTime(new Date());
+		video.setCreateDate(new Date());
 		video.setCategory("Default");
 
 		String videoId = videoService.saveVideo(video);
@@ -190,13 +191,17 @@ public class VideoController extends BasicController {
 	})
 	@PostMapping(value="/showAll")
 	public JSONResult showAll(@RequestBody Videos video, Integer isSaveRecord,
-			Integer page) throws Exception{
+			Integer page, Integer pageSize) throws Exception{
 		
 		if (page == null) {
 			page = 1;
 		}
-
-		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, PAGE_SIZE);
+		
+		if (pageSize == null) {
+			pageSize = PAGE_SIZE;
+		}
+		
+		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, pageSize);
 		return JSONResult.ok(result);
 	}
 	
@@ -230,5 +235,41 @@ public class VideoController extends BasicController {
 		
 		videoService.userUnlikeVideo(userId, videoId);
 		return JSONResult.ok();
+	}
+	
+	@ApiOperation(value = "User unlike the video")
+	@PostMapping(value="/saveComment")
+	public JSONResult saveComment(@RequestBody Comments comment,
+			String fatherCommentId, String toUserId) throws Exception{
+		
+		if (fatherCommentId != null && toUserId != null) {
+			comment.setFatherCommentId(fatherCommentId);
+			comment.setToUserId(toUserId);
+		}
+		
+		videoService.saveComment(comment);
+		return JSONResult.ok();
+	}
+	
+	@ApiOperation(value = "Query all video by paging", notes = "default size is 10.")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "videoId", required = true, dataType = "String", paramType = "form"),
+		@ApiImplicitParam(name = "page", required = false, dataType = "Integer", paramType = "form"),
+		@ApiImplicitParam(name = "pageSize", required = false, dataType = "Integer", paramType = "form"),
+	})
+	@PostMapping(value="/getAllComments")
+	public JSONResult getAllComments(String videoId, Integer page, Integer pageSize) throws Exception{
+		
+		if (page == null) {
+			page = 1;
+		}
+ 
+		if (pageSize == null) {
+			pageSize = 10;
+		}
+		
+		PagedResult list = videoService.getAllComments(videoId, page, pageSize);
+		
+		return JSONResult.ok(list);
 	}
 }
