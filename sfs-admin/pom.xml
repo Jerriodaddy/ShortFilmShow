@@ -286,5 +286,6 @@
 		<module>sfs-admin-pojo</module>
 		<module>sfs-admin-mapper</module>
 		<module>sfs-admin-service</module>
+		<module>sfs-admin-mng</module>
 	</modules>
 </project>

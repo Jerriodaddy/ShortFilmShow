@@ -46,6 +46,7 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
+		<table schema="" tableName="administrator"></table>
 		<table schema="" tableName="users"></table>
 		<table schema="" tableName="videos"></table>
 		<table schema="" tableName="users_report"></table>
