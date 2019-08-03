@@ -5,7 +5,7 @@
 	<!-- BEGIN HEAD -->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>小慕短视频后台管理系统</title>
+        <title>Background Management System</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         
@@ -26,7 +26,7 @@
     </head>
     <!-- END HEAD -->
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+	<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">
             
             <!-- 引入header页面 start -->
@@ -50,7 +50,7 @@
 				    
 				    	<div class="page-content-body">
 				    	
-					        <jsp:include page="imooc.jsp"></jsp:include>
+					        <jsp:include page="hello.jsp"></jsp:include>
 					        
 				        </div>
 				        
@@ -72,6 +72,6 @@
         <jsp:include page="common/commonFooterJS.jsp"></jsp:include>
         <!-- 公用尾部JS end -->
 	
-</body>
+	</body>
 
 </html>

@@ -20,7 +20,7 @@ public interface VideoService {
 	/**
 	 * @Description: 分页查询视频列表
 	 */
-	public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize);
+	public PagedResult getAllVideos(String desc, Integer isSaveRecord, Integer page, Integer pageSize);
 	
 	public PagedResult getAllVideosByCategory(Integer page, Integer pageSize, String Category);
 	
@@ -48,4 +48,5 @@ public interface VideoService {
 	 *  @Description: 获取视频评论
 	 */
 	public PagedResult getAllComments(String videoId, Integer page, Integer pageSize);
+	
 }

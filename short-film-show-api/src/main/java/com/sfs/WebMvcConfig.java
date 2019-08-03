@@ -6,7 +6,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import com.sfs.controller.interceptor.MiniInterceptor;
+import com.sfs.controller.interceptor.UploadInterceptor;
+import com.sfs.controller.interceptor.UserInterceptor;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
@@ -20,17 +21,23 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	
 	// 注册 MiniInterceptor
 	@Bean
-	public MiniInterceptor miniInterceptor() {
-		return new MiniInterceptor();
+	public UserInterceptor userInterceptor() {
+		return new UserInterceptor();
+	}
+	@Bean
+	public UploadInterceptor uploadInterceptor() {
+		return new UploadInterceptor();
 	}
 
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
 		
-		registry.addInterceptor(miniInterceptor()).addPathPatterns("/user/**")
+		registry.addInterceptor(userInterceptor()).addPathPatterns("/user/**")
 				.addPathPatterns("/video/upLoad","/video/upLoadCover",
 								"/video/userLike","/video/userUnlike")
 				.excludePathPatterns("/user/queryPublisher");
+		
+		registry.addInterceptor(uploadInterceptor()).addPathPatterns("/user/uploadFace", "/video/upLoadCover");
 		
 		super.addInterceptors(registry);
 	}

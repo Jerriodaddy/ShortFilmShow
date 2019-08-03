@@ -46,77 +46,101 @@ public class VideoController extends BasicController {
 		@ApiImplicitParam(name = "videoSeconds", required = true, dataType = "int", paramType = "form"),
 		@ApiImplicitParam(name = "videoWidth", required = true, dataType = "int", paramType = "form"),
 		@ApiImplicitParam(name = "videoHeight", required = true, dataType = "int", paramType = "form"),
-		@ApiImplicitParam(name = "desc", required = false, dataType = "String", paramType = "form")
+		@ApiImplicitParam(name = "desc", required = false, dataType = "String", paramType = "form"),
 	})
 	
-	@PostMapping(value="/uploadVideo", headers="content-type=multipart/form-data")
-	public JSONResult uploadVideo(String userId, 
+	@PostMapping(value="/addVideo", headers="content-type=multipart/form-data")
+	public JSONResult addVideo(String userId, 
 			double videoSeconds, int videoWidth, int videoHeight,
 			String desc,
 			@ApiParam(value = "Short video", required = true)
-			MultipartFile file) throws Exception {
+			MultipartFile videoFile, 
+			@ApiParam(value = "Video cover", required = false)
+			MultipartFile coverFile) throws Exception {
+		
 		if (StringUtils.isBlank(userId)) {
 			return JSONResult.errorMsg("User id can not be null.");
-		}
-		// 文件保存空间地址
-		String fileSpace = FILE_SPACE;
-		// 保存到数据库中的相对路径
-		String uploadPathDB = "/" + userId + "/video";
-
-		String fileName = file.getOriginalFilename();
-
-		FileOutputStream fileOutputStream = null;
-		InputStream inputStream = null;
-		// 文件上传的最终保存路径
-		String finalVideoPath = "";
-		try {
-			if (file != null) {
-				if (StringUtils.isNotBlank(fileName)) {
-					finalVideoPath = fileSpace + uploadPathDB + "/" + fileName;
-					// 数据库保存的路径
-					uploadPathDB += ("/" + fileName);
-
-					File outFile = new File(finalVideoPath);
-					if (outFile.getParentFile() != null || !outFile.getParentFile().isDirectory()) {
-						// Create the parent directory.
-						outFile.getParentFile().mkdirs();
-					}
-
-					fileOutputStream = new FileOutputStream(outFile);
-					inputStream = file.getInputStream();
-					IOUtils.copy(inputStream, fileOutputStream);
-				}
-			} else {
-				return JSONResult.errorMsg("Upload error.");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JSONResult.errorMsg("Upload error.");
-		} finally {
-			if (fileOutputStream != null) {
-				fileOutputStream.flush();
-				fileOutputStream.close();
-			}
 		}
 		
 		// 保存视频信息到数据库
 		Videos video = new Videos();
+				
+		String videoPathDB = uploadVideo(userId, videoFile); // 返回数据库保存视频的路径
+		video.setVideoPath(videoPathDB);
+		
+		if (coverFile != null) {
+			String coverPathDB = uploadCover(userId, coverFile); // 返回数据库保存视频的路径
+			video.setCoverPath(coverPathDB);
+		}
+		
 		video.setUserId(userId); 
 		video.setVideoSeconds((float)videoSeconds);
 		video.setVideoHeight(videoHeight);
 		video.setVideoWidth(videoWidth);
 		video.setVideoDesc(desc);
-		video.setVideoPath(uploadPathDB);
 		video.setStatus(VideoStatusEnum.SUCCESS.value);
 		video.setCreateDate(new Date());
 		video.setCategory("Default");
 
 		String videoId = videoService.saveVideo(video);
 		
+		//调用 uploadCover
 		return JSONResult.ok(videoId); // 返回头像地址
 	}
 	
-	@ApiOperation(value = "Uploads video cover")
+	public String uploadVideo(String userId, MultipartFile file) throws Exception {
+		if (StringUtils.isBlank(userId) || StringUtils.isEmpty(userId)) {
+			userId = DEFAULT_USER_ID;
+		}
+		// 文件保存空间地址
+		String fileSpace = FILE_SPACE;
+		String fileName = file.getOriginalFilename();
+		// 保存到数据库中的相对路径
+		String uploadPathDB = "";
+		// 文件上传的最终保存路径
+		String finalVideoPath = "";
+
+		if (file != null) {
+			if (StringUtils.isNotBlank(fileName)) {
+				// 数据库保存的路径
+				uploadPathDB += ("/" + userId + "/video" + "/" + fileName);
+
+				finalVideoPath = fileSpace + uploadPathDB;
+
+				uploadFile(file, finalVideoPath);
+			}
+		}
+
+		return uploadPathDB;
+	}
+	
+	public String uploadCover(String userId, MultipartFile file) throws Exception {
+		if (StringUtils.isBlank(userId) || StringUtils.isEmpty(userId)) {
+			userId = DEFAULT_USER_ID;
+		}
+		// 文件保存空间地址
+		String fileSpace = FILE_SPACE;
+		String fileName = file.getOriginalFilename();
+		// 保存到数据库中的相对路径
+		String uploadPathDB = "";
+		// 文件上传的最终保存路径
+		String finalVideoPath = "";
+
+		if (file != null) {
+			if (StringUtils.isNotBlank(fileName)) {
+				// 数据库保存的路径
+				uploadPathDB += ("/" + userId + "/video" + "/" + fileName);
+
+				finalVideoPath = fileSpace + uploadPathDB;
+
+				uploadFile(file, finalVideoPath);
+			}
+		}
+
+		return uploadPathDB;
+	}
+	
+	@ApiOperation(value = "Uploads video cover by videoId")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "userId", required = true, dataType = "String", paramType = "form"),
 		@ApiImplicitParam(name = "videoId", required = true, dataType = "String", paramType = "form"),
@@ -131,42 +155,20 @@ public class VideoController extends BasicController {
 		}
 		// 文件保存空间地址
 		String fileSpace = FILE_SPACE;
-		// 保存到数据库中的相对路径
-		String uploadPathDB = "/" + userId + "/video";
-
 		String fileName = file.getOriginalFilename();
-
-		FileOutputStream fileOutputStream = null;
-		InputStream inputStream = null;
+		// 保存到数据库中的相对路径
+		String uploadPathDB = "";
 		// 文件上传的最终保存路径
-		String finalCoverPath = "";
-		try {
-			if (file != null) {
-				if (StringUtils.isNotBlank(fileName)) {
-					finalCoverPath = fileSpace + uploadPathDB + "/" + fileName;
-					// 数据库保存的路径
-					uploadPathDB += ("/" + fileName);
+		String finalVideoPath = "";
 
-					File outFile = new File(finalCoverPath);
-					if (outFile.getParentFile() != null || !outFile.getParentFile().isDirectory()) {
-						// Create the parent directory.
-						outFile.getParentFile().mkdirs();
-					}
+		if (file != null) {
+			if (StringUtils.isNotBlank(fileName)) {
+				// 数据库保存的路径
+				uploadPathDB += ("/" + userId + "/video" + "/" + fileName);
 
-					fileOutputStream = new FileOutputStream(outFile);
-					inputStream = file.getInputStream();
-					IOUtils.copy(inputStream, fileOutputStream);
-				}
-			} else {
-				return JSONResult.errorMsg("Upload error.");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JSONResult.errorMsg("Upload error.");
-		} finally {
-			if (fileOutputStream != null) {
-				fileOutputStream.flush();
-				fileOutputStream.close();
+				finalVideoPath = fileSpace + uploadPathDB;
+
+				uploadFile(file, finalVideoPath);
 			}
 		}
 		
@@ -186,13 +188,21 @@ public class VideoController extends BasicController {
 	 */
 	@ApiOperation(value = "Query all video by paging", notes = "default size is 5.")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "isSaveRecord", required = false, dataType = "Integer", paramType = "form"),
-		@ApiImplicitParam(name = "page", required = false, dataType = "Integer", paramType = "form"),
+		@ApiImplicitParam(name = "desc", required = false, dataType = "String", paramType = "form"),
+		@ApiImplicitParam(name = "isSaveRecord", required = false, dataType = "int", paramType = "form"),
+		@ApiImplicitParam(name = "page", required = false, dataType = "int", paramType = "form"),
+		@ApiImplicitParam(name = "pageSize", required = false, dataType = "int", paramType = "form"),
 	})
+	
 	@PostMapping(value="/showAll")
-	public JSONResult showAll(@RequestBody Videos video, Integer isSaveRecord,
-			Integer page, Integer pageSize) throws Exception{
-		
+	public JSONResult showAll(
+//			@ApiParam(value = "Video Desc", required = false) 
+//			@RequestBody Videos video, 
+			String desc, Integer isSaveRecord, Integer page, Integer pageSize) throws Exception{
+//		System.out.println("showAll Result:");
+//		System.out.println("desc="+desc);
+//		System.out.println("page="+page);
+//		System.out.println("pagesize="+pageSize);
 		if (page == null) {
 			page = 1;
 		}
@@ -201,7 +211,7 @@ public class VideoController extends BasicController {
 			pageSize = PAGE_SIZE;
 		}
 		
-		PagedResult result = videoService.getAllVideos(video, isSaveRecord, page, pageSize);
+		PagedResult result = videoService.getAllVideos(desc, isSaveRecord, page, pageSize);
 		return JSONResult.ok(result);
 	}
 	
@@ -237,10 +247,14 @@ public class VideoController extends BasicController {
 		return JSONResult.ok();
 	}
 	
-	@ApiOperation(value = "User unlike the video")
+	@ApiOperation(value = "User add the comment to certain video or comment")
 	@PostMapping(value="/saveComment")
 	public JSONResult saveComment(@RequestBody Comments comment,
 			String fatherCommentId, String toUserId) throws Exception{
+		
+		System.out.println("/saveComment request msg:");
+		System.out.println("videoID="+comment.getVideoId());
+		System.out.println("fromUserId="+comment.getFromUserId());
 		
 		if (fatherCommentId != null && toUserId != null) {
 			comment.setFatherCommentId(fatherCommentId);

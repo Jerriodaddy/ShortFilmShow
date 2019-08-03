@@ -74,10 +74,9 @@ public class VideoServiceImpl implements VideoService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
-	public PagedResult getAllVideos(Videos video, Integer isSaveRecord, Integer page, Integer pageSize) {
+	public PagedResult getAllVideos(String desc, Integer isSaveRecord, Integer page, Integer pageSize) {
 
 		// 保存搜索词
-		String desc = video.getVideoDesc();
 		if (isSaveRecord != null && isSaveRecord == 1) {
 			SearchRecords record = new SearchRecords();
 			String recordId = sid.nextShort();

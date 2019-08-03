@@ -8,7 +8,8 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="<%=request.getContextPath()%>/">
-                <img src="<%=request.getContextPath()%>/static/pages/img/logos/logo.png" alt="logo" class="logo-default" /> 
+               <%-- <img src="<%=request.getContextPath()%>/static/pages/img/logos/logo.png" alt="logo" class="logo-default" /> --%>
+               <!-- The Short Film Show -->
             </a>
             <div class="menu-toggler sidebar-toggler" style="width: 19px; height: 19px;">
                 <span style="top: 8px;"></span>
@@ -27,7 +28,7 @@
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="<%=request.getContextPath()%>/center.shtml" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <span class="username username-hide-on-mobile"> 欢迎登录 </span>
+                        <span class="username username-hide-on-mobile"> Welcome </span>
                     </a>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->

@@ -16,19 +16,14 @@ public class CommentsVO {
 	/**
 	 * 评论人
 	 */
-	@Column(name = "from_user_id")
+
 	private String fromUserId;
-
-	@Column(name = "create_date")
 	private Date createDate;
-
-	@Column(name = "dislike_num")
 	private Long dislikeNum;
-
-	@Column(name = "like_num")
 	private Long likeNum;
-
 	private String comment;
+    private String fatherCommentId;
+    private String toUserId;
 
 	// What is added
 	private String faceImage;
@@ -172,5 +167,21 @@ public class CommentsVO {
 	 */
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getFatherCommentId() {
+		return fatherCommentId;
+	}
+
+	public void setFatherCommentId(String fatherCommentId) {
+		this.fatherCommentId = fatherCommentId;
+	}
+
+	public String getToUserId() {
+		return toUserId;
+	}
+
+	public void setToUserId(String toUserId) {
+		this.toUserId = toUserId;
 	}
 }

@@ -9,10 +9,10 @@
 
 <!-- 上下文对象路径 -->
 <input type="hidden" id="hdnContextPath" name="hdnContextPath" value="<%=request.getContextPath() %>"/>
-<!-- <input type="hidden" id="apiServer" name="apiServer" value="http://192.168.1.2:8081"/>  -->
-<!-- <input type="hidden" id="bgmServer" name="bgmServer" value="http://192.168.1.2:8080/mvc"/> -->
-<input type="hidden" id="apiServer" name="apiServer" value="https://www.imoocdsp.com/v"/>
-<input type="hidden" id="bgmServer" name="bgmServer" value="http://118.24.157.179/mvc"/>
+<!-- <input type="hidden" id="apiServer" name="apiServer" value="http://127.0.0.1:8080"/>
+<input type="hidden" id="videoServer" name="videoServer" value="http://127.0.0.1:8081/mvc"/> -->
+<input type="hidden" id="apiServer" name="apiServer" value="https://129.28.130.27"/>
+<input type="hidden" id="videoServer" name="videoServer" value="http://129.28.130.27/mvc"/>
 
 
 
