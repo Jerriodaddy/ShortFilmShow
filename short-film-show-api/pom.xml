@@ -17,5 +17,12 @@
 			<artifactId>short-film-show-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<!-- 添加 servlet，为了打包成 war 包 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

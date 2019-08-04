@@ -55,7 +55,7 @@ public class UserController extends BasicController {
 			return JSONResult.errorMsg("Uploaded file size exceed limit.");
 		}
 		// 文件保存空间地址
-		String fileSpace = FILE_SPACE;
+		String fileSpace = resourceConfig.getFileSpace();
 
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "/" + userId + "/face";

@@ -1,5 +1,6 @@
 package com.sfs;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartException;
 
+import com.sfs.cofig.ResourceConfig;
 import com.sfs.utils.JSONResult;
 
 import tk.mybatis.spring.annotation.MapperScan;
@@ -20,7 +22,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 //开启异步调用方法
 //@EnableAsync
 public class Application {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}

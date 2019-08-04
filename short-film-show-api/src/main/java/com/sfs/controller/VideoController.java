@@ -93,7 +93,7 @@ public class VideoController extends BasicController {
 			userId = DEFAULT_USER_ID;
 		}
 		// 文件保存空间地址
-		String fileSpace = FILE_SPACE;
+		String fileSpace = resourceConfig.getFileSpace();
 		String fileName = file.getOriginalFilename();
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "";
@@ -119,7 +119,7 @@ public class VideoController extends BasicController {
 			userId = DEFAULT_USER_ID;
 		}
 		// 文件保存空间地址
-		String fileSpace = FILE_SPACE;
+		String fileSpace = resourceConfig.getFileSpace();
 		String fileName = file.getOriginalFilename();
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "";
@@ -154,7 +154,7 @@ public class VideoController extends BasicController {
 			return JSONResult.errorMsg("Video id & user id can not be null.");
 		}
 		// 文件保存空间地址
-		String fileSpace = FILE_SPACE;
+		String fileSpace = resourceConfig.getFileSpace();
 		String fileName = file.getOriginalFilename();
 		// 保存到数据库中的相对路径
 		String uploadPathDB = "";

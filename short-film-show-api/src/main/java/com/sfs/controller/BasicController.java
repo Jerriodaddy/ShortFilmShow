@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sfs.cofig.ResourceConfig;
 import com.sfs.utils.RedisOperator;
 
 
@@ -18,12 +19,15 @@ public class BasicController {
 	@Autowired
 	public RedisOperator redis;
 	
+	@Autowired
+	public ResourceConfig resourceConfig;
+	
 	public static final String DEFAULT_USER_ID = "Unknow";
 	
 	public static final String USER_REDIS_SESSION = "user-redis-session"; //Final 均大写
-
+	
 	//文件保存空间地址
-	public static final String FILE_SPACE = "/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp";
+//	public static final String FILE_SPACE = "/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp";
 	
 //	public static final String FFMPEG_EXE = "";
 	

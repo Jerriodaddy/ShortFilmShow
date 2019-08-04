@@ -1,22 +1,28 @@
 package com.sfs;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import com.sfs.cofig.ResourceConfig;
 import com.sfs.controller.interceptor.UploadInterceptor;
 import com.sfs.controller.interceptor.UserInterceptor;
 
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
-
+	
+	@Autowired
+	private ResourceConfig resourceconfig;
 	@Override
+	
+	// 设置虚拟路径
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
 				.addResourceLocations("classpath:/META-INF/resources/")
-				.addResourceLocations("file:/Users/jerrio/Desktop/JumboX/TheShortFilmShow/short-film-show/tmp/");
+				.addResourceLocations("file:"+resourceconfig.getFileSpace()+"/");
 	}
 	
 	// 注册 MiniInterceptor
