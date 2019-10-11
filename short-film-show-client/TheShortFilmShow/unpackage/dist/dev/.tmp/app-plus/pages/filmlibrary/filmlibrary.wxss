@@ -1,0 +1,100 @@
+
+page {
+	height: 220%;
+	width: 100%;
+}
+.play-video {
+	height: 400rpx;
+	width: 98%;
+	margin-top: 7rpx;
+	margin-left: 10rpx;
+	margin-right: 10rpx;
+}
+.card {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	height: auto;
+	width: 95%;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	background:-webkit-gradient(linear,left top, left bottom,from(#FFFFFF),to(#696878) );
+	background:-o-linear-gradient(top,#FFFFFF,#696878 );
+	background:linear-gradient(to bottom,#FFFFFF,#696878 );
+	margin: 12rpx 20rpx;
+	border-radius: 20rpx;
+}
+.fword {
+	font-size: xx-small;
+	color: black;
+	position: fixed;
+	margin-left: 10rpx;
+}
+.followicon {
+	height: 40rpx;
+	width: 40rpx;
+	position: fixed;
+	padding-left: 10rpx;
+}
+.action {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 20rpx;
+}
+.rec {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.cardtitle {
+	font-size: large;
+	color: white;
+	margin: 30rpx 0rpx;
+}
+.container {
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:column;
+	    -ms-flex-direction:column;
+	        flex-direction:column;
+	height: 100%;
+	background-color: black;
+}
+.logo {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+}
+.t1 {
+	color: white;
+}
+

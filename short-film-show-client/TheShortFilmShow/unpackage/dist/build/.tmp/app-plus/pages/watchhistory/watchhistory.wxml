@@ -1,0 +1,2 @@
+<import src="./watchhistory.vue.wxml" />
+    <template is="36ae34fd" data="{{ ...$root['0'], $root }}"/>

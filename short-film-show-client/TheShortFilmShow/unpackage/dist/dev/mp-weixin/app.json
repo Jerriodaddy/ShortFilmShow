@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/watchhistory/watchhistory",
+    "pages/filmlibrary/filmlibrary",
+    "pages/videoplay/videoplay",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/Swiper-detail/Swiper-detail",
+    "pages/videosearch/videosearch",
+    "pages/open/open",
+    "pages/upload/upload",
+    "pages/profileinfo/profileinfo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "theShortFilmShow",
+    "navigationBarBackgroundColor": "black",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "color": "#7a7e83",
+    "selectedColor": "#0faeff",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "Home",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home.png"
+      },
+      {
+        "pagePath": "pages/filmlibrary/filmlibrary",
+        "text": "Filmlibrary",
+        "iconPath": "static/icons/boxes.png",
+        "selectedIconPath": "static/icons/boxes.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "Profile",
+        "iconPath": "static/icons/person.png",
+        "selectedIconPath": "static/icons/person.png"
+      }
+    ]
+  }
+}
