@@ -30,6 +30,12 @@
 
 			}
 		},
+		
+		onShow() {
+			// 记录用户跳转页面行为
+			this.goToPageRec();
+		},
+		
 		methods: {
 			register(res) {
 				var formObject = res.detail.value;

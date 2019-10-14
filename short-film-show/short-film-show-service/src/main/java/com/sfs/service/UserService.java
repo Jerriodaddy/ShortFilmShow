@@ -1,7 +1,12 @@
 package com.sfs.service;
 
+import java.util.List;
+
 import com.sfs.pojo.Users;
+import com.sfs.pojo.UsersBehavior;
 import com.sfs.pojo.UsersReport;
+import com.sfs.pojo.Videos;
+import com.sfs.pojo.easypoi.UserBehave;
 
 public interface UserService {
 	/**
@@ -44,4 +49,8 @@ public interface UserService {
 	public void deleteUserFanRelation(String userId, String fanId);
 
 	public void reportUser(UsersReport usersReport);
+
+	public List<UsersBehavior> queryUserBehavior();
+	
+	public void saveUserBehavior(String userId, String behavior, String target, String videoId, String commentId);
 }

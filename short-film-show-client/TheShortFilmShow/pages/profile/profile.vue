@@ -71,15 +71,12 @@
 		
 		onShow() {
 			var userInfo = this.getGlobalUserInfo();
-			if (userInfo == null || userInfo == undefined || userInfo == "") {
-				uni.navigateTo({
-					url: '../login/login',
-				});
-				return;
-			}
 			
-			console.log(userInfo);
+			// console.log(userInfo);
 			this.queryUserInfo(userInfo);
+			
+			// 记录用户跳转页面行为
+			this.goToPageRec();
 		},
 		
 		methods: {
@@ -112,17 +109,20 @@
 			logout: function() {
 				var userInfo = this.getGlobalUserInfo();
 				if (userInfo == null || userInfo == undefined || userInfo == "") {
-					uni.navigateTo({
+					uni.redirectTo({
 						url: '../login/login',
 					});
 					return;
 				}
 				var that = this;
 				uni.request({
-					url: that.$serverUrl + '/logout?userId' + userInfo.id,
+					url: that.$serverUrl + '/logout',
 					method: 'POST',
 					header: {
-						'content-type': 'application/json'
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					data:{
+						userId: userInfo.id,
 					},
 					success: (res) => {
 						console.log(res.data);
@@ -157,7 +157,7 @@
 					url: that.$serverUrl + '/user/query?userId=' + userInfo.id,
 					method: 'POST',
 					header: {
-						'content-type': 'application/json',
+						'content-type': 'application/x-www-form-urlencoded',
 						'userId': userInfo.id,
 						'userToken': userInfo.userToken,
 					},

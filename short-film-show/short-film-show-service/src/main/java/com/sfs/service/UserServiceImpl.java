@@ -1,5 +1,6 @@
 package com.sfs.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,14 +12,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sfs.mapper.UsersBehaviorMapper;
 import com.sfs.mapper.UsersFansMapper;
 import com.sfs.mapper.UsersLikeVideosMapper;
 import com.sfs.mapper.UsersMapper;
 import com.sfs.mapper.UsersReportMapper;
 import com.sfs.pojo.Users;
+import com.sfs.pojo.UsersBehavior;
 import com.sfs.pojo.UsersFans;
 import com.sfs.pojo.UsersLikeVideos;
 import com.sfs.pojo.UsersReport;
+import com.sfs.pojo.easypoi.UserBehave;
 import com.sfs.utils.JSONResult;
 
 import tk.mybatis.mapper.entity.Example;
@@ -38,6 +42,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UsersReportMapper usersReportMapper;
+	
+	@Autowired
+	private UsersBehaviorMapper usersBehaviorMapper;
 	
 	@Autowired
 	private Sid sid;
@@ -60,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		
 		String userId = sid.nextShort();
 		user.setId(userId);
-		userMapper.insert(user);
+		userMapper.insertSelective(user);
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -158,5 +165,28 @@ public class UserServiceImpl implements UserService {
 		usersReportMapper.insert(userReport);
 		
 	}
+	
+	@Transactional(propagation = Propagation.SUPPORTS)
+	@Override
+	public List<UsersBehavior> queryUserBehavior() {
+		return usersBehaviorMapper.selectAll();
+	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
+	public void saveUserBehavior(String userId, String behavior, String target, String videoId, String commentId) {
+		String id = sid.nextShort();
+		
+		UsersBehavior usersBehavior = new UsersBehavior();
+		usersBehavior.setId(id);
+		usersBehavior.setUserId(userId);
+		usersBehavior.setBehavior(behavior);
+		usersBehavior.setTarget(target);
+		usersBehavior.setVideoId(videoId);
+		usersBehavior.setCommentId(commentId);
+		usersBehavior.setCreateDate(new Date());
+		
+		usersBehaviorMapper.insertSelective(usersBehavior);
+		
+	}
 }

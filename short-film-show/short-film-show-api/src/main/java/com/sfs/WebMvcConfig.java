@@ -16,8 +16,8 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	
 	@Autowired
 	private ResourceConfig resourceconfig;
-	@Override
 	
+	@Override
 	// 设置虚拟路径
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
@@ -43,7 +43,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 								"/video/userLike","/video/userUnlike")
 				.excludePathPatterns("/user/queryPublisher");
 		
-		registry.addInterceptor(uploadInterceptor()).addPathPatterns("/user/uploadFace", "/video/upLoadCover");
+//		registry.addInterceptor(uploadInterceptor()).addPathPatterns("/user/uploadFace", "/video/upLoadCover");
 		
 		super.addInterceptors(registry);
 	}

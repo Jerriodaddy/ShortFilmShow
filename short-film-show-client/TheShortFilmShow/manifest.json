@@ -98,7 +98,16 @@
         /* 小程序特有相关 */
         "appid" : "",
         "setting" : {
-            "urlCheck" : true
-        }
+            "urlCheck" : false,
+            "postcss" : true,
+            "minified" : true
+        },
+        "usingComponents" : false
+    },
+    "mp-alipay" : {
+        "usingComponents" : false
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
     }
 }

@@ -178,7 +178,12 @@
 			// 获取评论
 			this.getComment();
 		},
-
+		
+		onShow() {
+			// 记录用户跳转页面行为
+			this.goToPageRec();
+		},
+		
 		methods: {
 			swichMenu: async function(current) { //点击其中一个 menu
 				if (this.currentTab == current) {

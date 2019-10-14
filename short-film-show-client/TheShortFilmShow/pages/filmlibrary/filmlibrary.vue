@@ -55,7 +55,12 @@
 				title: "Films Library"
 			});
 		},
-
+		
+		onShow() {
+			// 记录用户跳转页面行为
+			this.goToPageRec();
+		},
+		
 		methods: {
 
 		}

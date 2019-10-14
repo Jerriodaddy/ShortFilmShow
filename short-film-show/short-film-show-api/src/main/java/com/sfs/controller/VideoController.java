@@ -199,10 +199,6 @@ public class VideoController extends BasicController {
 //			@ApiParam(value = "Video Desc", required = false) 
 //			@RequestBody Videos video, 
 			String desc, Integer isSaveRecord, Integer page, Integer pageSize) throws Exception{
-//		System.out.println("showAll Result:");
-//		System.out.println("desc="+desc);
-//		System.out.println("page="+page);
-//		System.out.println("pagesize="+pageSize);
 		if (page == null) {
 			page = 1;
 		}

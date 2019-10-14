@@ -50,7 +50,12 @@
 			// 
 			// console.log(userInfo);
 		},
-
+		
+		onShow() {
+			// 记录用户跳转页面行为
+			this.goToPageRec();
+		},
+		
 		methods: {
 
 			jumpvp: function() {

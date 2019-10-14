@@ -1,2 +1,1 @@
-<import src="./open.vue.wxml" />
-    <template is="0086721d" data="{{ ...$root['0'], $root }}"/>
+<view><image class="test1" src="../../static/assets/logo-empty.png" mode></image><image class="test1" src="../../static/assets/wheel.png" mode></image></view>

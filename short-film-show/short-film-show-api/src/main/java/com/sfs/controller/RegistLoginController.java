@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sfs.enums.UsersBehaviorEnum;
 import com.sfs.pojo.Users;
+import com.sfs.pojo.UsersBehavior;
 import com.sfs.pojo.vo.UsersVO;
 import com.sfs.service.UserService;
 import com.sfs.utils.JSONResult;
@@ -56,7 +58,7 @@ public class RegistLoginController extends BasicController {
 	
 	public UsersVO setUserRedisSessionToken(Users userModel) {
 		String uniqueToken = UUID.randomUUID().toString();
-		redis.set(USER_REDIS_SESSION + ":" + userModel.getId(), uniqueToken, 1000 * 60 * 30); // 过期时间单位为毫秒
+		redis.set(USER_REDIS_SESSION + ":" + userModel.getId(), uniqueToken, 60 * 60 * 24 * 7); // 过期时间单位为秒 7天
 		
 		UsersVO userVO = new UsersVO();
 		BeanUtils.copyProperties(userModel, userVO);
@@ -82,6 +84,9 @@ public class RegistLoginController extends BasicController {
 		if (userResult != null) {
 			userResult.setPassword("");// Security concern
 			UsersVO userVO = setUserRedisSessionToken(userResult);
+			
+			userService.saveUserBehavior(userResult.getId(), UsersBehaviorEnum.LOGIN.content, null, null, null);
+			
 			return JSONResult.ok(userVO);
 		} else { 
 			return JSONResult.errorMsg("Username or password is wrong, please try again.");
@@ -94,6 +99,8 @@ public class RegistLoginController extends BasicController {
 	public JSONResult logout(String userId) throws Exception{ 
 		//维护用户关系是通过 redis session，删除即可
 		redis.del(USER_REDIS_SESSION + ":" + userId);
+		
+		userService.saveUserBehavior(userId, UsersBehaviorEnum.LOGOUT.content, null, null, null);
 		return JSONResult.ok();
 	}
 }

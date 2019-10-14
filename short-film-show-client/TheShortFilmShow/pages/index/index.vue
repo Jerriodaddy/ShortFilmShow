@@ -45,7 +45,7 @@
 										<view class="film" v-for="item in videoList" v-bind:key="item.id">
 											<view @click="navigatToVideoPlay(item)">
 												<image class="filmpic" :src="serverUrl+item.coverPath" mode=""></image>
-												<text class="filmname">{{item.id}}</text>
+												<text class="filmname">{{item.videoName}}</text>
 											</view>
 										</view>
 									</view>
@@ -119,6 +119,14 @@
 		},
 
 		onLoad() {
+			var userInfo = this.getGlobalUserInfo();
+			if (userInfo == null || userInfo == undefined || userInfo == "") {
+				uni.redirectTo({
+					url: '../login/login',
+				});
+				return;
+			}
+			
 			uni.setNavigationBarTitle({
 				title: 'TheShortFilmShow'
 			});
@@ -129,9 +137,14 @@
 			// 获取当前页面
 			var page = this.page;
 			this.getAllVideoList(page);
-
+			
 		},
-
+		
+		onShow() {
+			// 记录用户跳转页面行为
+			this.goToPageRec();
+		},
+		
 		onPullDownRefresh() {
 			console.log('refresh');
 			setTimeout(function() {

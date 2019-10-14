@@ -19,7 +19,6 @@
     "navigationBarBackgroundColor": "black",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {},
   "tabBar": {
     "color": "#7a7e83",
     "selectedColor": "#0faeff",
@@ -52,5 +51,6 @@
     "autoclose": false
   },
   "appname": "ShortMovie",
-  "compilerVersion": "2.2.2"
+  "compilerVersion": "2.3.3",
+  "usingComponents": {}
 }

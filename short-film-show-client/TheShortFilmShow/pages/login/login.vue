@@ -29,7 +29,7 @@
 			uni.setNavigationBarTitle({
 				title: "Sign in"
 			});
-
+			
 		},
 
 		methods: {
@@ -68,7 +68,7 @@
 									title: 'Welcome'
 								});
 								that.setGlobalUserInfo(res.data.data);
-								that.goback();
+								that.goToIndex();
 							} else if (status == 500) {
 								uni.showToast({
 									icon: 'none',
@@ -81,9 +81,9 @@
 				}
 			},
 			
-			goback() {
-				uni.navigateBack({
-					delta: 1
+			goToIndex() {
+				uni.switchTab({
+					url:'../index/index',
 				})
 			}
 		},

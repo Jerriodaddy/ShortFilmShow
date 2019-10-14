@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sfs.enums.UsersBehaviorEnum;
 import com.sfs.pojo.Users;
 import com.sfs.pojo.UsersReport;
 import com.sfs.pojo.vo.PublisherVideo;
@@ -188,5 +189,12 @@ public class UserController extends BasicController {
 
 		return JSONResult.ok("Cancle follow success");
 	}
+	
+	@PostMapping("/goToPageRec")
+	public JSONResult goToPageRec(String userId, String target) throws Exception {
+		
+		userService.saveUserBehavior(userId, UsersBehaviorEnum.GOTOPAGE.content, target, null, null);
 
+		return JSONResult.ok();
+	}
 }

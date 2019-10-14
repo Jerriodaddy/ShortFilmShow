@@ -1,2 +1,1 @@
-<import src="./login.vue.wxml" />
-    <template is="03c73e1e" data="{{ ...$root['0'], $root }}"/>
+<view class="lg-back"><view class="picture"><image class="logo" src="../../static/assets/logo.png" mode="aspectFit"></image></view><form data-event-opts="{{[['submit',[['login',['$event']]]]]}}" bindsubmit="__e"><view class="itemView"><input class="input" name="username" placeholder="Username"/></view><view class="itemView"><input class="input" name="password" placeholder="Password"/></view><view class="button-area"><button class="loginBtn" formType="submit">Login</button><button data-event-opts="{{[['tap',[['register',['$event']]]]]}}" class="registerBtn" bindtap="__e">Sign up now!</button></view></form></view>
