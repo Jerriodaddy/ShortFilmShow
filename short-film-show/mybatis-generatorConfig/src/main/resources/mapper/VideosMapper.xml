@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sfs.mapper.VideosMapper" >
+  <resultMap id="BaseResultMap" type="com.sfs.pojo.Videos" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="cover_path" property="coverPath" jdbcType="VARCHAR" />
+    <result column="video_path" property="videoPath" jdbcType="VARCHAR" />
+    <result column="video_name" property="videoName" jdbcType="VARCHAR" />
+    <result column="director" property="director" jdbcType="VARCHAR" />
+    <result column="actors" property="actors" jdbcType="VARCHAR" />
+    <result column="video_desc" property="videoDesc" jdbcType="VARCHAR" />
+    <result column="video_seconds" property="videoSeconds" jdbcType="REAL" />
+    <result column="video_height" property="videoHeight" jdbcType="INTEGER" />
+    <result column="video_width" property="videoWidth" jdbcType="INTEGER" />
+    <result column="like_num" property="likeNum" jdbcType="BIGINT" />
+    <result column="comment_num" property="commentNum" jdbcType="BIGINT" />
+    <result column="popularity" property="popularity" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

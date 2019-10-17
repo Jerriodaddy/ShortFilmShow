@@ -1,2 +1,1 @@
-<import src="./watchhistory.vue.wxml" />
-    <template is="36ae34fd" data="{{ ...$root['0'], $root }}"/>
+<view class="container column"><view class="history_a column"><block wx:for="{{history_card}}" wx:for-item="c" wx:for-index="__i0__"><view class="card_loop"><view data-event-opts="{{[['tap',[['jumpvp',['$event']]]]]}}" class="history_card row hor_center" bindtap="__e"><view class="history_t super_center"><text class="history_fn">{{history}}</text></view><view class="history_ia super_center"><image class="history_img" src="../../static/assets/Tom Eastwood.jpg" mode="aspectFit"></image></view></view></view></block></view></view>

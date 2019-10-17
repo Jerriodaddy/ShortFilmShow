@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import com.sfs.cofig.ResourceConfig;
+import com.sfs.config.ResourceConfig;
 import com.sfs.controller.interceptor.UploadInterceptor;
 import com.sfs.controller.interceptor.UserInterceptor;
 
@@ -38,10 +38,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
 		
-		registry.addInterceptor(userInterceptor()).addPathPatterns("/user/**")
-				.addPathPatterns("/video/upLoad","/video/upLoadCover",
-								"/video/userLike","/video/userUnlike")
-				.excludePathPatterns("/user/queryPublisher");
+//		registry.addInterceptor(userInterceptor()).addPathPatterns("/user/**")
+//				.addPathPatterns("/video/upLoad","/video/upLoadCover",
+//								"/video/userLike","/video/userUnlike")
+//				.excludePathPatterns("/user/queryPublisher");
 		
 //		registry.addInterceptor(uploadInterceptor()).addPathPatterns("/user/uploadFace", "/video/upLoadCover");
 		

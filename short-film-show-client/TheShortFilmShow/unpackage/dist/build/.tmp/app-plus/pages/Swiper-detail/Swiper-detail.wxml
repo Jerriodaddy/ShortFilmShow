@@ -1,2 +1,1 @@
-<import src="./Swiper-detail.vue.wxml" />
-    <template is="12cd43ab" data="{{ ...$root['0'], $root }}"/>
+<view class="container"><view class="background"><view class="fud"><text class="notice">Function under development</text></view></view></view>

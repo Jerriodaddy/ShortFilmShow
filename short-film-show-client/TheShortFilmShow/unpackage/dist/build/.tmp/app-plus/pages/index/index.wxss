@@ -199,16 +199,15 @@ page {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
 }
 .filmname {
+	width: 245.9rpx;
 	color: white;
 	font-size: small;
+	word-break:break-word;
 }
 .film {
+	height: 440rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -218,12 +217,23 @@ page {
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
+	margin-left: 20rpx;
 	/* background: #1AAD19; */
 }
 .filmpic {
 	width: 245.9rpx;
 	height: 330rpx;
 }
-
-
+.onefilm{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	height: 440rpx;
+}
 

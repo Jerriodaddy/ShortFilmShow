@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartException;
 
-import com.sfs.cofig.ResourceConfig;
+import com.sfs.config.ResourceConfig;
 import com.sfs.utils.JSONResult;
 
 import tk.mybatis.spring.annotation.MapperScan;

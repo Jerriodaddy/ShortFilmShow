@@ -7,9 +7,6 @@ import javax.validation.constraints.NotBlank;
  
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import cn.afterturn.easypoi.excel.annotation.ExcelTarget;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
  
 /**
  * <pre>

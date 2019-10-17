@@ -11,7 +11,7 @@
     "code": "100"
   },
   "description": "",
-  "launch_path": "__uniappservice.html",
+  "launch_path": "__uniapptabbar.html",
   "developer": {
     "name": "",
     "email": "",
@@ -22,7 +22,10 @@
     "Share": {},
     "Push": {},
     "VideoPlayer": {},
-    "LivePusher": {}
+    "LivePusher": {},
+    "UniNView": {
+      "description": "UniNView原生渲染"
+    }
   },
   "plus": {
     "useragent": {
@@ -36,9 +39,7 @@
       "delay": 0
     },
     "popGesture": "close",
-    "launchwebview": {
-      "render": "always"
-    },
+    "launchwebview": {},
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "light",
@@ -129,9 +130,18 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.1.3",
-      "control": "webview",
-      "nvueCompiler": "weex"
+      "compilerVersion": "2.3.3",
+      "control": "v8",
+      "nvueCompiler": "weex",
+      "renderer": "auto"
+    },
+    "secondwebview": {
+      "id": "1",
+      "launch_path": "__uniappview.html",
+      "kernel": "WKWebview",
+      "mode": "child",
+      "top": 0,
+      "bottom": 56
     }
   }
 }

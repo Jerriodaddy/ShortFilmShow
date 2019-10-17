@@ -166,10 +166,10 @@
 		</dependency>
 
 		<!-- 集成lombok 框架, 通过注解简化 get，set 等样板代码 -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- 集成easypoi组件 导出excel，word http://easypoi.mydoc.io/ -->
 		<!-- <dependency>

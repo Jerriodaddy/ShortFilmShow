@@ -1,2 +1,1 @@
-<import src="./profileinfo.vue.wxml" />
-    <template is="50a5d04d" data="{{ ...$root['0'], $root }}"/>
+<view class="background"><view class="information-card"><view class="title-line"><text class="info-title">Nicke name</text><text class="info-title">ID</text><text class="info-title">Gender</text><text class="info-title">Birthday</text><text class="info-title">Prefer</text></view><view class="content-line"><text class="info-content conteng-space">content</text><text class="info-content conteng-space">content</text><text class="info-content conteng-space">content</text><text class="info-content conteng-space">content</text><text class="info-content conteng-space">content</text></view></view></view>

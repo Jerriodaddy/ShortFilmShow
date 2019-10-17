@@ -35,8 +35,8 @@
 		<!-- <table tableName="users"></table> -->
 		<!-- <table tableName="users_fans"></table>
 		<table tableName="users_like_videos"></table>
-		<table tableName="videos"></table>
 		<table tableName="users_report"></table> -->
-		<table tableName="users_behavior"></table>
+		<!-- <table tableName="users_behavior"></table> -->
+		<table tableName="videos"></table>
     </context>
 </generatorConfiguration>

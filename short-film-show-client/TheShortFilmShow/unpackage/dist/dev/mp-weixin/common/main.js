@@ -14,8 +14,8 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function 
 _vue.default.config.productionTip = false;
 
 _App.default.mpType = 'app';
-// Vue.prototype.$serverUrl = 'http://129.28.130.27:8080/sfs'
-_vue.default.prototype.$serverUrl = 'http://127.0.0.1:8080';
+_vue.default.prototype.$serverUrl = 'https://www.checkchack.cn:8443/sfs';
+// Vue.prototype.$serverUrl = 'http://127.0.0.1:8080'
 
 _vue.default.prototype.setGlobalUserInfo = function (user) {
   uni.setStorageSync('userInfo', user);

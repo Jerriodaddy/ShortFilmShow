@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sfs.cofig.ResourceConfig;
+import com.sfs.config.ResourceConfig;
 import com.sfs.utils.RedisOperator;
 
 

@@ -99,7 +99,6 @@ public class VideoController extends BasicController {
 		return uploadPathDB;
 	}
 
-
 //	@PostMapping(value="/uploadVideo", headers="content-type=multipart/form-data")
 //	@ResponseBody
 //	public JSONResult uploadVideo(Videos video, MultipartFile file) throws Exception {

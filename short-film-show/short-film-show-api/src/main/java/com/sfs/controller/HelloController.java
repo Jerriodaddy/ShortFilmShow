@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sfs.cofig.ResourceConfig;
+import com.sfs.config.ResourceConfig;
 import com.sfs.pojo.Users;
 import com.sfs.pojo.UsersBehavior;
 import com.sfs.pojo.Videos;

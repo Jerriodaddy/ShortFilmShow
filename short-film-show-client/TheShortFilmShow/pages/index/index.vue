@@ -39,12 +39,61 @@
 							</swiper>
 
 							<view class="filmsarea">
-								<view class="title">Default Column1</view>
+								<view class="title">{{menuTabs[currentTab].name}}</view>
 								<scroll-view class="oneline" scroll-x="true" @scrolltolower="getMoreAllVideoList">
-									<view class="filmsblock">
-										<view class="film" v-for="item in videoList" v-bind:key="item.id">
-											<view @click="navigatToVideoPlay(item)">
-												<image class="filmpic" :src="serverUrl+item.coverPath" mode=""></image>
+									<view class="filmsblock" v-if="currentTab==0">
+										<view class="film" v-for="(item,i0) in videoList" :key="i0">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<!-- 垃圾代码，之后再改 -jerrio -->
+									<view class="filmsblock" v-if="currentTab==1">
+										<view class="film" v-for="(item,i1) in videoList1" :key="i1">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<view class="filmsblock" v-if="currentTab==2">
+										<view class="film" v-for="(item,i2) in videoList2" :key="i2">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<view class="filmsblock" v-if="currentTab==3">
+										<view class="film" v-for="(item,i3) in videoList3" :key="i3">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<view class="filmsblock" v-if="currentTab==4">
+										<view class="film" v-for="(item,i4) in videoList4" :key="i4">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<view class="filmsblock" v-if="currentTab==5">
+										<view class="film" v-for="(item,i5) in videoList5" :key="i5">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
+												<text class="filmname">{{item.videoName}}</text>
+											</view>
+										</view>
+									</view>
+									<view class="filmsblock" v-if="currentTab==6">
+										<view class="film" v-for="(item,i6) in videoList6" :key="i6">
+											<view class="onefilm" @click="navigatToVideoPlay(item)">
+												<image class="filmpic" :src="serverUrl+item.coverPath" mode="aspectFill"></image>
 												<text class="filmname">{{item.videoName}}</text>
 											</view>
 										</view>
@@ -67,6 +116,8 @@
 				isClickChange: false,
 				currentTab: 0,
 				menuTabs: [{
+					name: 'General'
+				}, {
 					name: 'Crime'
 				}, {
 					name: 'Drama'
@@ -86,6 +137,7 @@
 					[],
 					[],
 					[],
+					[],
 					[]
 				],
 				// 								indicatorDots: true,
@@ -99,6 +151,259 @@
 				page: 1,
 				videoList: [],
 
+				videoList1: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191016002301.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191016092681PFA8",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "The Interrogation of Olivia Donovan",
+						videoPath: "/Unknow/video/The Interrogation of Olivia Donovan - Festival (A) - Carl Mackenzie.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+				],
+				videoList2: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/1571153324(1).png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HRT61K6Y80",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "MissedConnections",
+						videoPath: "/Unknow/video/MissedConnections_Animated_SOUND_COLOR_2 (1).mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+					{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015234542.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HZ3ZXAC1KP",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Toothbrush",
+						videoPath: "/Unknow/video/Toothbrush (2016) - Harris Alvi.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, {
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015235128.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015K158BP4ARP",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Gender Twister",
+						videoPath: "/Unknow/video/Gender Twister [Short film] - Jack Goessens.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+				],
+				videoList3: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015234329.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HYDYDPM800",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Magic Lee",
+						videoPath: "/Unknow/video/Magic Lee - Clean Version - Matt Bowron.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, {
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015234644.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HZCYZDTWBC",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "LOOK",
+						videoPath: "/Unknow/video/LOOK - Akvile Bliujute.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+				],
+				videoList4: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/1571153739(1).png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HTS7GWPARP",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Starcrossed",
+						videoPath: "/Unknow/video/Starcrossed - Matt Bowron.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+				],
+				videoList5: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015233847.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HWSC17DB54",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Newbeginnig",
+						videoPath: "/Unknow/video/Newbeginnig - Sunnie Du.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, {
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/1571153324(1).png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HRT61K6Y80",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "MissedConnections",
+						videoPath: "/Unknow/video/MissedConnections_Animated_SOUND_COLOR_2 (1).mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, {
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015234644.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HZCYZDTWBC",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "LOOK",
+						videoPath: "/Unknow/video/LOOK - Akvile Bliujute.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, 
+				],
+				videoList6: [{
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/1571153198(1).png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HPYAX7FWZC",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Vendetta",
+						videoPath: "/Unknow/video/Vendetta (ven·dét·ta) - Andrea Facheris.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}, {
+						actors: null,
+						category: "1",
+						commentNum: 0,
+						coverPath: "/Unknow/video/微信截图_20191015230700.png",
+						createDate: 1571153440000,
+						director: null,
+						faceImage: null,
+						id: "191015HF26G9XHPH",
+						likeNum: 0,
+						nickname: null,
+						popularity: 0,
+						status: 1,
+						userId: "",
+						videoDesc: "1",
+						videoHeight: null,
+						videoName: "Tom Eastwood",
+						videoPath: "/Unknow/video/The String 60 seconds - Tom Eastwood.mp4",
+						videoSeconds: null,
+						videoWidth: null,
+					}
+				],
 				screenWidth: 350,
 				serverUrl: "",
 
@@ -126,7 +431,7 @@
 				});
 				return;
 			}
-			
+
 			uni.setNavigationBarTitle({
 				title: 'TheShortFilmShow'
 			});
@@ -137,14 +442,14 @@
 			// 获取当前页面
 			var page = this.page;
 			this.getAllVideoList(page);
-			
+
 		},
-		
+
 		onShow() {
 			// 记录用户跳转页面行为
 			this.goToPageRec();
 		},
-		
+
 		onPullDownRefresh() {
 			console.log('refresh');
 			setTimeout(function() {
@@ -213,7 +518,7 @@
 					header: {
 						'content-type': 'application/x-www-form-urlencoded'
 					},
-					
+
 					success: (res) => {
 						uni.hideLoading();
 						console.log(res.data.data);
@@ -410,17 +715,20 @@
 	.filmsblock {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
 	}
 
 	.filmname {
+		width: 245.9upx;
 		color: white;
 		font-size: small;
+		word-break:break-word;
 	}
 
 	.film {
+		height: 440upx;
 		display: flex;
 		flex-direction: column;
+		margin-left: 20upx;
 		/* background: #1AAD19; */
 	}
 
@@ -428,6 +736,10 @@
 		width: 245.9upx;
 		height: 330upx;
 	}
-
-
+	
+	.onefilm{
+		display: flex;
+		flex-direction: column;
+		height: 440upx;
+	}
 </style>

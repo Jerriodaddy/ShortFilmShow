@@ -148,7 +148,7 @@ var render = function() {
           attrs: {
             current: _vm.currentTab,
             duration: "300",
-            eventid: "389024e0-4"
+            eventid: "389024e0-10"
           },
           on: { change: _vm.swiperChange }
         },
@@ -167,7 +167,7 @@ var render = function() {
                       staticClass: "swiper-one-list",
                       attrs: {
                         "scroll-y": "true",
-                        eventid: "389024e0-3-" + index1
+                        eventid: "389024e0-9-" + index1
                       },
                       on: {
                         scrolltolower: function($event) {
@@ -271,7 +271,9 @@ var render = function() {
                             { staticClass: "filmsarea" },
                             [
                               _c("view", { staticClass: "title" }, [
-                                _vm._v("Default Column1")
+                                _vm._v(
+                                  _vm._s(_vm.menuTabs[_vm.currentTab].name)
+                                )
                               ]),
                               _c(
                                 "scroll-view",
@@ -279,59 +281,410 @@ var render = function() {
                                   staticClass: "oneline",
                                   attrs: {
                                     "scroll-x": "true",
-                                    eventid: "389024e0-2-" + index1
+                                    eventid: "389024e0-8-" + index1
                                   },
                                   on: { scrolltolower: _vm.getMoreAllVideoList }
                                 },
                                 [
-                                  _c(
-                                    "view",
-                                    { staticClass: "filmsblock" },
-                                    _vm._l(_vm.videoList, function(
-                                      item,
-                                      index0
-                                    ) {
-                                      return _c(
+                                  _vm.currentTab == 0
+                                    ? _c(
                                         "view",
-                                        { key: item.id, staticClass: "film" },
-                                        [
-                                          _c(
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList, function(
+                                          item,
+                                          i0
+                                        ) {
+                                          return _c(
                                             "view",
-                                            {
-                                              attrs: {
-                                                eventid:
-                                                  "389024e0-1-" +
-                                                  index1 +
-                                                  "-" +
-                                                  index0
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.navigatToVideoPlay(item)
-                                                }
-                                              }
-                                            },
+                                            { key: i0, staticClass: "film" },
                                             [
-                                              _c("image", {
-                                                staticClass: "filmpic",
-                                                attrs: {
-                                                  src:
-                                                    _vm.serverUrl +
-                                                    item.coverPath,
-                                                  mode: ""
-                                                }
-                                              }),
                                               _c(
-                                                "text",
-                                                { staticClass: "filmname" },
-                                                [_vm._v(_vm._s(item.videoName))]
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-1-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i0
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
                                               )
                                             ]
                                           )
-                                        ]
+                                        })
                                       )
-                                    })
-                                  )
+                                    : _vm._e(),
+                                  _vm.currentTab == 1
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList1, function(
+                                          item,
+                                          i1
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i1, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-2-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i1
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e(),
+                                  _vm.currentTab == 2
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList2, function(
+                                          item,
+                                          i2
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i2, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-3-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i2
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e(),
+                                  _vm.currentTab == 3
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList3, function(
+                                          item,
+                                          i3
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i3, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-4-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i3
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e(),
+                                  _vm.currentTab == 4
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList4, function(
+                                          item,
+                                          i4
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i4, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-5-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i4
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e(),
+                                  _vm.currentTab == 5
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList5, function(
+                                          item,
+                                          i5
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i5, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-6-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i5
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e(),
+                                  _vm.currentTab == 6
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "filmsblock" },
+                                        _vm._l(_vm.videoList6, function(
+                                          item,
+                                          i6
+                                        ) {
+                                          return _c(
+                                            "view",
+                                            { key: i6, staticClass: "film" },
+                                            [
+                                              _c(
+                                                "view",
+                                                {
+                                                  staticClass: "onefilm",
+                                                  attrs: {
+                                                    eventid:
+                                                      "389024e0-7-" +
+                                                      index1 +
+                                                      "-" +
+                                                      i6
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.navigatToVideoPlay(
+                                                        item
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("image", {
+                                                    staticClass: "filmpic",
+                                                    attrs: {
+                                                      src:
+                                                        _vm.serverUrl +
+                                                        item.coverPath,
+                                                      mode: "aspectFill"
+                                                    }
+                                                  }),
+                                                  _c(
+                                                    "text",
+                                                    { staticClass: "filmname" },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(item.videoName)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e()
                                 ]
                               )
                             ],
@@ -446,6 +799,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {
@@ -453,6 +855,8 @@ __webpack_require__.r(__webpack_exports__);
       isClickChange: false,
       currentTab: 0,
       menuTabs: [{
+        name: 'General' },
+      {
         name: 'Crime' },
       {
         name: 'Drama' },
@@ -472,6 +876,7 @@ __webpack_require__.r(__webpack_exports__);
       [],
       [],
       [],
+      [],
       []],
 
       // 								indicatorDots: true,
@@ -484,6 +889,259 @@ __webpack_require__.r(__webpack_exports__);
       totalPage: 1,
       page: 1,
       videoList: [],
+
+      videoList1: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191016002301.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191016092681PFA8",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "The Interrogation of Olivia Donovan",
+        videoPath: "/Unknow/video/The Interrogation of Olivia Donovan - Festival (A) - Carl Mackenzie.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
+
+      videoList2: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/1571153324(1).png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HRT61K6Y80",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "MissedConnections",
+        videoPath: "/Unknow/video/MissedConnections_Animated_SOUND_COLOR_2 (1).mp4",
+        videoSeconds: null,
+        videoWidth: null },
+
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015234542.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HZ3ZXAC1KP",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Toothbrush",
+        videoPath: "/Unknow/video/Toothbrush (2016) - Harris Alvi.mp4",
+        videoSeconds: null,
+        videoWidth: null },
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015235128.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015K158BP4ARP",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Gender Twister",
+        videoPath: "/Unknow/video/Gender Twister [Short film] - Jack Goessens.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
+
+      videoList3: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015234329.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HYDYDPM800",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Magic Lee",
+        videoPath: "/Unknow/video/Magic Lee - Clean Version - Matt Bowron.mp4",
+        videoSeconds: null,
+        videoWidth: null },
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015234644.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HZCYZDTWBC",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "LOOK",
+        videoPath: "/Unknow/video/LOOK - Akvile Bliujute.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
+
+      videoList4: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/1571153739(1).png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HTS7GWPARP",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Starcrossed",
+        videoPath: "/Unknow/video/Starcrossed - Matt Bowron.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
+
+      videoList5: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015233847.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HWSC17DB54",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Newbeginnig",
+        videoPath: "/Unknow/video/Newbeginnig - Sunnie Du.mp4",
+        videoSeconds: null,
+        videoWidth: null },
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/1571153324(1).png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HRT61K6Y80",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "MissedConnections",
+        videoPath: "/Unknow/video/MissedConnections_Animated_SOUND_COLOR_2 (1).mp4",
+        videoSeconds: null,
+        videoWidth: null },
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015234644.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HZCYZDTWBC",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "LOOK",
+        videoPath: "/Unknow/video/LOOK - Akvile Bliujute.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
+
+      videoList6: [{
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/1571153198(1).png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HPYAX7FWZC",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Vendetta",
+        videoPath: "/Unknow/video/Vendetta (ven·dét·ta) - Andrea Facheris.mp4",
+        videoSeconds: null,
+        videoWidth: null },
+      {
+        actors: null,
+        category: "1",
+        commentNum: 0,
+        coverPath: "/Unknow/video/微信截图_20191015230700.png",
+        createDate: 1571153440000,
+        director: null,
+        faceImage: null,
+        id: "191015HF26G9XHPH",
+        likeNum: 0,
+        nickname: null,
+        popularity: 0,
+        status: 1,
+        userId: "",
+        videoDesc: "1",
+        videoHeight: null,
+        videoName: "Tom Eastwood",
+        videoPath: "/Unknow/video/The String 60 seconds - Tom Eastwood.mp4",
+        videoSeconds: null,
+        videoWidth: null }],
+
 
       screenWidth: 350,
       serverUrl: "" };
